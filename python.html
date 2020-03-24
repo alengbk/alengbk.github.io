@@ -11,7 +11,8 @@
   <p>&nbsp; &nbsp;(1) 分析上傳之 CSV 檔案，逐行取值，傳送至 API URL</p>
   <p>&nbsp; &nbsp;(2) 將回傳結果紀錄於 LOG 檔中，並以先進先出方式，保留一定天數</p>
   <p>&nbsp; &nbsp;(3) 回傳結果與 CSV 檔，每日發送 MAIL 至管理員</p>
-  <p><span style="color: #ff0000; background-color: #ffff00;">◎ 透過AWS CLI 判定每日備份狀況，並搭配 Slack，建立監控結果回報機制</span></p>
+  <p><span style="color: #ff0000; background-color: #ffff00;">◎ 簡易手機監控結果回報機制</span></p>
+  <p>&nbsp; &nbsp;透過 AWS CLI 判定每日備份狀況，並搭配 Slack，將狀況上傳至手機 Slack 中</p>
   <p><span style="color: #ff0000; background-color: #ffff00;">◎ 帳單明細自動化系統</span></p>
   <p>&nbsp; &nbsp;(1) Parse 金額明細 PDF 檔(pdfminer3k)，並轉換成 CSV 檔</p>
   <p>&nbsp; &nbsp;(2) 依照部門，將總金額與原始 PDF 檔，透過郵件寄出</p>
