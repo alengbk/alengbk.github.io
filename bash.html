@@ -1,15 +1,31 @@
-<!DOCTYPE html>
-<html>
-  <h2 style="text-align: center;"><u>我的程式作品：Bash</u></h2>
-  <p><span style="color: #ff0000; background-color: #ffff00;">◎ 使用者容量警告</span><br />&nbsp; &nbsp;利用repauota指令，抓出每個使用者目前使用容量，並產生一個文字網頁，供管理者從網頁查詢，同時判斷當使用者容量快到限制值前的警告比例時，發送告知管理者 </p>
-  <p><span style="color: #ff0000; background-color: #ffff00;">◎ Openwebmail分信</span></p>
-  <p>&nbsp; 在新信夾中，保留程式指定最前面的封數，其餘郵件移至新創建的信夾中</p>
-  <p><span style="color: #ff0000; background-color: #ffff00;">◎ 定時大量發送通知信程式</span></p>
-  <p>在Openwebmail中修改指定的文字檔，利用別名功能，輸入寄件人位置，等待系統Crontab指定發送時間，透過perl發送信件</p>
-  <p><span style="color: #ff0000; background-color: #ffff00;">◎ POP3+SMTP 攻擊防禦</span></p>
-  <p>透過系統Crontab指定程式執行的間隔時間，不透過maillog去分析，而是新建一個指定分鐘內的新Log來分析，來判別是否為有大量 SASL error訊息，再使用IPFW 封鎖採用動態封鎖IP，將 5組 IP 改以先進先出概念，儲存於 blocklist檔內，並可於程式內自訂 3組固定封鎖IP</p>
-  <p><span style="color: #ff0000; background-color: #ffff00;">◎ 資料一步備份與還原工具</span></p>
-  <p>透過預先寫好的腳本，將重要的資料備份於指定的目錄或外接硬碟中 <br />當機器損壞或無法開機時，可藉此還原</p>
-  <p><span style="color: #ff0000; background-color: #ffff00;">◎ Rsync轉移工具</span></p>
-  <p>即時建立Rsync 分享傳送設定，讓工程師可以透過簡單的介面，將資料即時傳輸到另一台機器</p>
-</html>
+<h2 style="text-align:center"><u>我的程式作品：Bash</u></h2>
+
+<p><span style="background-color:#ffff00; color:#ff0000">◎ ElasticSearch 告警</span><br />
+定期掃描 ElasticSearch 特定關鍵字數目，分類統計次數，將異常網址透過可連外主機做 DNS解析與 curl 測試<br />
+並將結果已附件方式，傳送至 Telegram 告警</p>
+
+<p><span style="background-color:#ffff00; color:#ff0000">◎ DB 狀態分析</span><br />
+搭配&nbsp; ansible 至各類&nbsp;DB 執行 cli 指令，並透過回傳值判定服務是否正常</p>
+
+<p><span style="background-color:#ffff00; color:#ff0000">◎ 服務運維</span><br />
+搭配 Jenkins 對異常服務，進行服務版本判定與重啟，並建立相關確認流程</p>
+
+<p><span style="background-color:#ffff00; color:#ff0000">◎ 使用者容量警告</span><br />
+&nbsp; &nbsp;利用repauota指令，抓出每個使用者目前使用容量，並產生一個文字網頁，供管理者從網頁查詢，同時判斷當使用者容量快到限制值前的警告比例時，發送告知管理者</p>
+
+<p><span style="background-color:#ffff00; color:#ff0000">◎ Openwebmail分信</span><br />
+&nbsp; 在新信夾中，保留程式指定最前面的封數，其餘郵件移至新創建的信夾中</p>
+
+<p><span style="background-color:#ffff00; color:#ff0000">◎ 定時大量發送通知信程式</span><br />
+在Openwebmail中修改指定的文字檔，利用別名功能，輸入寄件人位置，等待系統Crontab指定發送時間，透過perl發送信件</p>
+
+<p><span style="background-color:#ffff00; color:#ff0000">◎ POP3+SMTP 攻擊防禦</span><br />
+透過系統Crontab指定程式執行的間隔時間，不透過maillog去分析，而是新建一個指定分鐘內的新Log來分析，來判別是否為有大量 SASL error訊息，再使用IPFW 封鎖採用動態封鎖IP，將 5組 IP 改以先進先出概念，儲存於 blocklist檔內，並可於程式內自訂 3組固定封鎖IP</p>
+
+<p><span style="background-color:#ffff00; color:#ff0000">◎ 資料一步備份與還原工具</span><br />
+透過預先寫好的腳本，將重要的資料備份於指定的目錄或外接硬碟中<br />
+當機器損壞或無法開機時，可藉此還原</p>
+
+<p><span style="background-color:#ffff00; color:#ff0000">◎ Rsync轉移工具</span><br />
+即時建立Rsync 分享傳送設定，讓工程師可以透過簡單的介面，將資料即時傳輸到另一台機器</p>
+
