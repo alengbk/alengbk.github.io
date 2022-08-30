@@ -1,26 +1,38 @@
-<!DOCTYPE html>
-<html>
-  <h2 style="text-align: center;"><u>我的程式作品：Python</u></h2>
-  <p><span style="color: #ff0000; background-color: #ffff00;">◎ Apache + SQLite 簡易產品管理系統</span></p>
-  <p>&nbsp; &nbsp;使用 mod_python 執行 python，將帳密與資料至於 SQLite 中，並提供網頁輸入與查詢功能</p>
-  <p><span style="color: #ff0000; background-color: #ffff00;">◎ AWS CodeCommit 不同帳號間自動轉移</span></p>
-  <p>&nbsp; &nbsp;透過 git pull 與 git push 指令方式，交叉使用達到原始碼同步</p>
-  <p><span style="color: #ff0000; background-color: #ffff00;">◎ AWS CodeCommit 透過 EC2 打包備份至 S3 Bucket</span></p>
-  <p>&nbsp; &nbsp;搭配 linux tar 打包原始碼，並透過 AWS CLI 上傳至 S3 Bucket中保存</p>
-  <p><span style="color: #ff0000; background-color: #ffff00;">◎ FTP資料拋轉系統：</span></p>
-  <p>&nbsp; &nbsp;(1) 分析上傳之 CSV 檔案，逐行取值，傳送至 API URL</p>
-  <p>&nbsp; &nbsp;(2) 將回傳結果紀錄於 LOG 檔中，並以先進先出方式，保留一定天數</p>
-  <p>&nbsp; &nbsp;(3) 回傳結果與 CSV 檔，每日發送 MAIL 至管理員</p>
-  <p><span style="color: #ff0000; background-color: #ffff00;">◎ 簡易手機監控結果回報機制</span></p>
-  <p>&nbsp; &nbsp;透過 AWS CLI 判定每日備份狀況，並搭配 Slack，將狀況上傳至手機 Slack 中</p>
-  <p><span style="color: #ff0000; background-color: #ffff00;">◎ 帳單明細自動化系統</span></p>
-  <p>&nbsp; &nbsp;(1) Parse 金額明細 PDF 檔(pdfminer3k)，並轉換成 CSV 檔</p>
-  <p>&nbsp; &nbsp;(2) 依照部門，將總金額與原始 PDF 檔，透過郵件寄出</p>
-  <p>&nbsp; &nbsp;(3) 將 CSV 檔內容，透過 xlwings 套件匯入 Excel 中</p>
-  <p><span style="color: #ff0000; background-color: #ffff00;">◎ 每日報表自動化</span></p>
-  <p>&nbsp; &nbsp;(1) 透過 selenium 抓取 AWS Daskboard 圖表</p>
-  <p>&nbsp; &nbsp;(2) 透過 poplib 抓取郵件內容，並用 PIL 轉成圖片</p>
-  <p>&nbsp; &nbsp;(3) 將抓取的圖片，依照不同的專案，拋送於 Confluence</p>
-  <p>&nbsp;</p>
-  <p>&nbsp;</p>
-</html>
+<h2 style="text-align:center"><u>我的程式作品：Python</u></h2>
+
+<p><span style="background-color:#ffff00; color:#ff0000">◎ Apache + SQLite 簡易產品管理系統</span></p>
+
+<p>&nbsp; &nbsp;使用 mod_python 執行 python，將帳密與資料至於 SQLite 中，並提供網頁輸入與查詢功能</p>
+
+<p><span style="background-color:#ffff00; color:#ff0000">◎ FTP資料拋轉系統：</span></p>
+
+<p>&nbsp; &nbsp;(1) 分析上傳之 CSV 檔案，逐行取值，傳送至 API URL</p>
+
+<p>&nbsp; &nbsp;(2) 將回傳結果紀錄於 LOG 檔中，並以先進先出方式，保留一定天數</p>
+
+<p>&nbsp; &nbsp;(3) 回傳結果與 CSV 檔，每日發送 MAIL 至管理員</p>
+
+<p><span style="background-color:#ffff00; color:#ff0000">◎ 帳單明細自動化系統</span></p>
+
+<p>&nbsp; &nbsp;(1) Parse 金額明細 PDF 檔(pdfminer3k)，並轉換成 CSV 檔</p>
+
+<p>&nbsp; &nbsp;(2) 依照部門，將總金額與原始 PDF 檔，透過郵件寄出</p>
+
+<p>&nbsp; &nbsp;(3) 將 CSV 檔內容，透過 xlwings 套件匯入 Excel 中</p>
+
+<p><span style="background-color:#ffff00; color:#ff0000">◎ 每日報表自動化</span></p>
+
+<p>&nbsp; &nbsp;(1) 透過 selenium 抓取 AWS Daskboard 圖表</p>
+
+<p>&nbsp; &nbsp;(2) 透過 poplib 抓取郵件內容，並用 PIL 轉成圖片</p>
+
+<p>&nbsp; &nbsp;(3) 將抓取的圖片，依照不同的專案，拋送於 Confluence</p>
+
+<p><span style="background-color:#ffff00; color:#ff0000">◎ 網頁自動化</span></p>
+
+<p>&nbsp; &nbsp;(1) 透過&nbsp; Flask 網頁，將輸入的更板內容，轉成 CD 程式需要資訊</p>
+
+<p>&nbsp; &nbsp;(2) 將 Prometheus Altermanager 警訊，轉換並發送至 Telegram 告警</p>
+
+<p>&nbsp;</p>
+
