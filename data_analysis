@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+  <h2 style="text-align: center;"><u>ElasticSearch 數據分析應用</u></h2>
+
+  <p><span style="color: #ff0000; background-color: #ffff99;">透過 nginx log 來源 IP , 繪製訪問地圖</span><br /><br /></p>
+  <p><img src="https://alengbk.github.io/es-map.png"></p>
+
+  <p><span style="color: #ff0000; background-color: #ffff99;">透過 mysql slow log 分析 Query_time 大於 3s 的語法</span><br /><br /></p>
+  <p><img src="https://alengbk.github.io/es-mysql-slow.png"></p>
+  
+</html>
