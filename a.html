@@ -4,11 +4,77 @@
 	<meta charset="utf-8">
 	<title>員工管理系統</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<style>
+		/* Navigation styles */
+		nav {
+			background-color: #eee;
+			padding: 10px;
+			text-align: center;
+		}
+
+		nav ul {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+
+		nav li {
+			display: inline-block;
+			margin: 0 10px;
+		}
+
+		nav a {
+			color: #333;
+			text-decoration: none;
+			padding: 5px;
+			border-radius: 5px;
+		}
+
+		nav a:hover {
+			background-color: #333;
+			color: #fff;
+		}
+
+		/* Content styles */
+		.container {
+			width: 80%;
+			margin: auto;
+		}
+
+		h1 {
+			margin-top: 30px;
+			font-size: 36px;
+			text-align: center;
+		}
+
+		p {
+			line-height: 1.5;
+			margin-bottom: 20px;
+		}
+	</style>
 </head>
 <body>
 	<header>
 		<h1>員工管理系統</h1>
 	</header>
+
+<!-- 選單 -->
+<nav>
+	<ul>
+		
+		<li><a href="/dashboard">Home</a></li>
+		<li><a href="/aws">AWS</a></li>
+		<li><a href="#">GCP</a></li>
+		<li><a href="/magento">Magento</a></li>
+		<li><a href="/downloads">Downloads</a></li>
+		<li><a href="/logout"><b>[ Logout ]</b></a></li>
+		
+	</ul>
+</nav>
+
+
+
+
 	<main>
 		<h2>員工列表</h2>
 		<table>
