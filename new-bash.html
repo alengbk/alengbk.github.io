@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Bash 作品區</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<style>
+		/* Navigation styles */
+		nav {
+			background-color: #eee;
+			padding: 10px;
+			text-align: center;
+		}
+
+		nav ul {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+
+		nav li {
+			display: inline-block;
+			margin: 0 10px;
+		}
+
+		nav a {
+			color: #333;
+			text-decoration: none;
+			padding: 5px;
+			border-radius: 5px;
+		}
+
+		nav a:hover {
+			background-color: #333;
+			color: #fff;
+		}
+
+		/* Content styles */
+		.container {
+			width: 80%;
+			margin: auto;
+		}
+
+		h1 {
+			margin-top: 30px;
+			font-size: 36px;
+			text-align: center;
+		}
+
+		p {
+			line-height: 1.5;
+			margin-bottom: 20px;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>我的程式作品：Bash</h1>
+	</header>
+
+<!-- 選單 -->
+<nav>
+	<ul>
+		
+		<li><a href="/new-cert.html">工作證照區</a></li>
+		<li><a href="/new-automation.html">自動化工具</a></li>
+		<li><a href="/new-bash.html">Bash區</a></li>
+		<li><a href="/new-python.html">Python區</a></li>
+		<li><a href="/new-data_analysis.html">ElasticSearch 數據分析應用</a></li>
+		<li><a href="/new-infrastructure.html">架構分享</a></li>
+		
+	</ul>
+</nav>
+
+	<main>
+		<table>
+			<thead>
+				<tr>
+					<th>ElasticSearch 告警</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+                        <h4>定期掃描 ElasticSearch 特定關鍵字數目，分類統計次數，將異常網址透過可連外主機做 DNS解析與 curl 測試
+                            <br>並將結果已附件方式，傳送至 Telegram 告警</h4>
+                        <img src="https://alengbk.github.io/tg-alter-es-01.png">
+                        <img src="https://alengbk.github.io/tg-alter-es-02.png" width=850>
+                    </td>
+				</tr>
+			</tbody>
+            <!---------------------------------------------------->
+			<thead>
+				<tr>
+					<th>Percona Xtrabackup 自動備份還原</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+                    <td>
+                    <h4>於 MySQL slave 主機上，透過 Xtrabackup 進行每日沒單位的遞增備份，並每小時自動還原至備用主機上
+                        <br>以達到緊急狀態時，可即時查詢或替換用途</h4>
+					<img src="https://alengbk.github.io/tg-alter-backup-01.png"></td>
+				</tr>
+			</tbody>
+            <!---------------------------------------------------->
+			<thead>
+				<tr>
+					<th>SSL 憑證產生器</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+                    <td>
+                    <h4>透過 Certbot 套件，批次將免費憑證( Let's encrypt ) 依需求產出，提供 HTTPS 伺服器使用</h4>
+					<img src="https://alengbk.github.io/cert-gen.png" width=850></td>
+				</tr>
+			</tbody>
+            <!---------------------------------------------------->
+			<thead>
+				<tr>
+					<th>DB 狀態分析</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+                    <td>
+                    <h4>搭配  ansible 至各類 DB 執行 cli 指令，並透過回傳值判定服務是否正常</h4>
+					<img src="https://alengbk.github.io/redis-test.png" width=850></td>
+				</tr>
+			</tbody>
+            <!---------------------------------------------------->
+			<thead>
+				<tr>
+					<th>服務運維</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+                        <h4>搭配 Jenkins 對異常服務，進行服務版本判定與重啟，並建立相關確認流程
+                            <br>搭配 AWX 對服務進行更板作業，並建立相關確認流程
+                            <br>定時壓縮服務 Log 檔，模擬 logrotate 方式進行自動化刪除</h4>
+                    </td>
+				</tr>
+			</tbody>
+            <!---------------------------------------------------->
+			<thead>
+				<tr>
+					<th>使用者容量警告</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+                        <h4>利用repauota指令，抓出每個使用者目前使用容量，並產生一個文字網頁，供管理者從網頁查詢，
+                        <br>同時判斷當使用者容量快到限制值前的警告比例時，發送告知管理者</h4>
+                    </td>
+				</tr>
+			</tbody>
+            <!---------------------------------------------------->
+			<thead>
+				<tr>
+					<th>Openwebmail分信</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+                        <h4>在新信夾中，保留程式指定最前面的封數，其餘郵件移至新創建的信夾中</h4>
+                    </td>
+				</tr>
+			</tbody>
+            <!---------------------------------------------------->
+			<thead>
+				<tr>
+					<th>定時大量發送通知信程式</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+                        <h4>在Openwebmail中修改指定的文字檔，利用別名功能，輸入寄件人位置，等待系統Crontab指定發送時間，透過perl發送信件</h4>
+                    </td>
+				</tr>
+			</tbody>
+            <!---------------------------------------------------->
+			<thead>
+				<tr>
+					<th>POP3+SMTP 攻擊防禦</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+                        <h4>透過系統Crontab指定程式執行的間隔時間，不透過maillog去分析，而是新建一個指定分鐘內的新Log來分析，
+                        <br>來判別是否為有大量 SASL error訊息，再使用IPFW 封鎖採用動態封鎖IP，將 5組 IP 改以先進先出概念，
+                        <br>儲存於 blocklist檔內，並可於程式內自訂 3組固定封鎖IP</h4>
+                    </td>
+				</tr>
+			</tbody>
+            <!---------------------------------------------------->
+			<thead>
+				<tr>
+					<th>資料一步備份與還原工具</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+                        <h4>透過預先寫好的腳本，將重要的資料備份於指定的目錄或外接硬碟中
+                            <br>當機器損壞或無法開機時，可藉此還原</h4>
+                    </td>
+				</tr>
+			</tbody>
+            <!---------------------------------------------------->
+			<thead>
+				<tr>
+					<th>Rsync轉移工具</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+                        <h4>即時建立Rsync 分享傳送設定，讓工程師可以透過簡單的介面，將資料即時傳輸到另一台機器</h4>
+                    </td>
+				</tr>
+			</tbody>
+
+
+
+		</table>
+	</main>
+	<footer>
+		<p>&copy;</p>
+	</footer>
+</body>
+</html>
