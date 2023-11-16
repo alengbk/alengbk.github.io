@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Python 作品</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<style>
+		/* Navigation styles */
+		nav {
+			background-color: #eee;
+			padding: 10px;
+			text-align: center;
+		}
+
+		nav ul {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+
+		nav li {
+			display: inline-block;
+			margin: 0 10px;
+		}
+
+		nav a {
+			color: #333;
+			text-decoration: none;
+			padding: 5px;
+			border-radius: 5px;
+		}
+
+		nav a:hover {
+			background-color: #333;
+			color: #fff;
+		}
+
+		/* Content styles */
+		.container {
+			width: 80%;
+			margin: auto;
+		}
+
+		h1 {
+			margin-top: 30px;
+			font-size: 36px;
+			text-align: center;
+		}
+
+		p {
+			line-height: 1.5;
+			margin-bottom: 20px;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<h1>個人工作相關</h1>
+	</header>
+
+<!-- 選單 -->
+<nav>
+	<ul>
+		
+		<li><a href="/new-cert.html">工作證照區</a></li>
+		<li><a href="/new-automation.html">自動化工具</a></li>
+		<li><a href="/new-bash.html">Bash區</a></li>
+		<li><a href="/new-python.html">Python區</a></li>
+		<li><a href="/new-data_analysis.html">ElasticSearch 數據分析應用</a></li>
+		<li><a href="/new-infrastructure.html">架構分享</a></li>
+		
+	</ul>
+</nav>
+
+	<main>
+		<table>
+			<thead>
+				<tr>
+					<th>系統時間校正</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+                    <td>
+                        <h4>針對重要服務(ex.MySQL)，透過 nc 建立的 API 回傳資訊，輔助抓取 Google 網站時間
+                        <br>發現目的主機時間落差超過 30s 時，立即執行 nptedate，並發送 Telegram 報警通知</h4>
+                    </td>
+				</tr>
+			</tbody>
+            <!---------------------------------------------------->
+			<thead>
+				<tr>
+					<th>Apache + SQLite 簡易產品管理系統</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+                    <td>
+                        <h4>使用 mod_python 執行 python，將帳密與資料至於 SQLite 中，並提供網頁輸入與查詢功能</h4>
+                    </td>
+				</tr>
+			</tbody>
+            <!---------------------------------------------------->
+			<thead>
+				<tr>
+					<th> FTP資料拋轉系統</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+                    <td>
+                        <h4>(1) 分析上傳之 CSV 檔案，逐行取值，傳送至 API URL
+                        <br>(2) 將回傳結果紀錄於 LOG 檔中，並以先進先出方式，保留一定天數
+                        <br>(3) 回傳結果與 CSV 檔，每日發送 MAIL 至管理員</h4>
+                    </td>
+				</tr>
+			</tbody>
+            <!---------------------------------------------------->
+			<thead>
+				<tr>
+					<th>帳單明細自動化系統</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+                        <h4>
+                                (1) Parse 金額明細 PDF 檔(pdfminer3k)，並轉換成 CSV 檔
+                                <br>(2) 依照部門，將總金額與原始 PDF 檔，透過郵件寄出
+                                <br>(3) 將 CSV 檔內容，透過 xlwings 套件匯入 Excel 中
+                        </h4>
+                    </td>
+				</tr>
+			</tbody>
+            <!---------------------------------------------------->
+			<thead>
+				<tr>
+					<th>每日報表自動化</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+                        <h4>
+                            (1) 透過 selenium 抓取 AWS Daskboard 圖表
+                            <br>(2) 透過 poplib 抓取郵件內容，並用 PIL 轉成圖片
+                            <br>(3) 將抓取的圖片，依照不同的專案，拋送於 Confluence
+                        </h4>
+                    </td>
+				</tr>
+			</tbody>
+            <!---------------------------------------------------->
+			<thead>
+				<tr>
+					<th>網頁自動化</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+                        <h4><font color="blue"> (1) 透過  Flask 網頁，將輸入的更板內容，轉成 CD 程式需要資訊 </font></h4>
+                        <img src="https://alengbk.github.io/flask.png" width=800>
+                        <img src="https://alengbk.github.io/flask2.png">
+                        <h4><font color="blue"> (2) 將 Prometheus Altermanager 警訊，轉換並發送至 Telegram 告警 </font></h4>
+                        <img src="https://alengbk.github.io/altermaganer1.png">
+                        <img src="https://alengbk.github.io/altermaganer2.png">
+                    </td>
+				</tr>
+			</tbody>
+
+
+
+		</table>
+	</main>
+	<footer>
+		<p>&copy;</p>
+	</footer>
+</body>
+</html>
