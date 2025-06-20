@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Allen - 基礎設施 (Infrastructure)</title> <!-- {/* Changed Title */} -->
+    <title>Allen - 我的工作經歷 (Work experience)</title>
     <!-- CSS 樣式 -->
     <style>
         /* --- 基本重設與全域設定 --- */
@@ -52,90 +52,294 @@
         /* --- 響應式 --- */
         @media (max-width: 768px) { header nav { flex-direction: column; align-items: center; } header nav ul { margin-top: 1rem; justify-content: center; } header nav ul li { margin-left: 0.5rem; margin-right: 0.5rem; } main h2 { font-size: 1.8rem; } .portfolio-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; } }
         @media (max-width: 480px) { main h2 { font-size: 1.5rem; } .portfolio-grid { grid-template-columns: 1fr; } header nav ul li { margin-left: 0.3rem; margin-right: 0.3rem; } header nav ul li a { padding: 0.3rem 0.6rem; } .card img { height: 150px; } .card-content { padding: 0.8rem; } .card-content h4 { font-size: 1.05rem; } .card-content p { font-size: 0.85rem; } }
+
+
+        /* --- 時間軸 Timeline 專用樣式 --- */
+        .timeline-container {
+            width: 100%; /* 讓它填滿 main 的寬度 */
+            padding: 20px 0; /* 上下留白 */
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 900px; /* 您可以調整時間軸的最大寬度 */
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #007bff; /* 主題藍色，與您的連結顏色一致 */
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            background-color: white;
+            border: 4px solid #FACC15; /* 使用您導覽列 hover 的黃色 */
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-item.left {
+            left: 0;
+        }
+
+        .timeline-item.right {
+            left: 50%;
+        }
+
+        .timeline-item.left::after {
+            right: -17px;
+        }
+
+        .timeline-item.right::after {
+            left: -17px;
+        }
+
+        /* 指向時間軸的箭頭 (可選，如果您喜歡簡潔可以移除這段) */
+        .timeline-item.left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid #fff; /* 與 .timeline-content 背景色一致 */
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent #fff;
+        }
+
+        .timeline-item.right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid #fff; /* 與 .timeline-content 背景色一致 */
+            border-width: 10px 10px 10px 0;
+            border-color: transparent #fff transparent transparent;
+        }
+
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: #fff; /* 與您的卡片背景色一致 */
+            position: relative;
+            border-radius: 8px; /* 與您的卡片圓角一致 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 與您的卡片陰影一致 */
+        }
+
+        .timeline-content h4 { /* 調整為 h4 */
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-size: 1.15rem; /* 與您的卡片 h4 字體大小一致 */
+            color: #333; /* 與您的卡片 h4 顏色一致 */
+        }
+
+        .timeline-content h5 { /* 新增 h5 樣式 (如果使用) */
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-size: 1rem; /* 可自行調整 */
+            color: #555;
+        }
+
+        .timeline-content p.date {
+            font-size: 0.9em;
+            font-weight: bold;
+            color: #007bff; /* 主題藍色 */
+            margin-bottom: 10px;
+        }
+
+        .timeline-content ul {
+            padding-left: 20px;
+            list-style: disc;
+            margin-bottom: 0; /* 移除 ul 可能的預設底部邊距 */
+            font-size: 0.9rem; /* 與您的卡片 p 字體大小一致 */
+            color: #666; /* 與您的卡片 p 顏色一致 */
+        }
+        .timeline-content ul li {
+            margin-bottom: 0.3rem; /* 列表項間距 */
+        }
+
+        /* --- 時間軸響應式調整 --- */
+        /* 放在您現有 @media (max-width: 768px) 規則內部，或者如果沒有就新建一個 */
+        @media screen and (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item.left,
+            .timeline-item.right {
+                left: 0%;
+            }
+
+            .timeline-item.left::after,
+            .timeline-item.right::after {
+                left: 15px;
+            }
+            
+            .timeline-item.left::before,
+            .timeline-item.right::before {
+                left: 60px;
+                border: medium solid #fff; /* 與 .timeline-content 背景色一致 */
+                border-width: 10px 10px 10px 0;
+                border-color: transparent #fff transparent transparent;
+            }
+        }
+        /* 如果您還有更小螢幕的斷點，例如 @media (max-width: 480px)，可以考慮是否需要進一步調整時間軸樣式 */
     </style>
 </head>
 <body>
     <header>
         <nav>
-            <h1><a href="#">Allen / 基礎架構分享</a></h1>
+            <h1><a href="#">Allen / 工作歷程表</a></h1>
             <ul>
-                <li><a href="new-cert.html">證照</a></li>
+                <li><a href="new-cert.html" class="active">證照</a></li>
                 <li><a href="new-automation.html">自動化</a></li>
                 <li><a href="new-bash.html">Bash</a></li>
                 <li><a href="new-python.html">Python</a></li>
                 <li><a href="new-data_analysis.html">數據分析</a></li>
-                <li><a href="new-infrastructure.html" class="active">基礎設施</a></li> <!-- {/* Changed active class */} -->
+                <li><a href="new-infrastructure.html">基礎設施</a></li>
                 <li><a href="new-aws.html">AWS</a></li>
                 <li><a href="new-security.html">資安</a></li>
-                <li><a href="new-about.html">工作經歷</a></li>
+                <li><a href="new-about.html">工作歷程</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <div class="title-container">
-            <h2>基礎設施 (Infrastructure)</h2> <!-- {/* Changed H2 */} -->
+
+    <div class="title-container">
+        <h2>我的工作經歷</h2> <!-- 您可以修改標題 -->
+    </div>
+
+    <div class="timeline-container"> <!-- 新增一個容器來包裹時間軸 -->
+        <div class="timeline">
+
+            <!-- 請將以下區塊複製並修改成您的實際經歷 -->
+            <!-- 範例 1: 最近的工作 -->
+            <div class="timeline-item right"> <!-- 或 left，交錯排列 -->
+                <div class="timeline-content">
+                    <p class="date">2023年02月 - 至今</p>
+                    <h4>瀚宇彩晶</h4> <!-- 使用 h4 配合您現有的卡片標題樣式 -->
+                    <h5>資深系統工程師</h5> <!-- 使用 h5 或 p -->
+                    <ul>
+                        <li>負責雲端管理與資安規劃。</li>
+                        <li>使用技術：AWS, GCP, Python。</li>
+                        <li>自製與規劃雲端 SIEM 1.0 內容，節省 SOC 監控人力。</li>
+                        <li>雲端（AWS , GCP）建制管理。</li>
+                        <li>雲端資訊安全監控。</li>
+                        <li>自動化腳本規劃撰寫。</li>
+                        <li>雲端服務監控與告警腳本撰寫。</li>
+                        <li>地端機房環控維運。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 範例 2: 上一份工作 -->
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <p class="date">2020年07月 - 2023年07月</p>
+                    <h4>樂耀台灣有限公司</h4>
+                    <h5>資深系統工程師</h5>
+                    <ul>
+                        <li>參與服務代管的後端維護，與自動化工具撰寫。</li>
+                        <li>主要技術棧：CentOS, ELK, AWS, Redis, MongoDB, Rabbit....。</li>
+                        <li>自動化架構建制與編寫。</li>
+                        <li>更板自動化工具編寫。</li>
+                        <li>服務監控建制與結合 Telegram 主動報警。</li>
+                        <li>各環境系統管理，服務建制，故障排除。</li>
+                        <li>DB 類(MySQL , ElasticSearch , Redis ...) 建制維運。</li>
+                        <li>各雲端服務操作 ( AWS , GCP , Aliyun )。</li>
+                        <li>混合雲架構規劃。</li>
+                        <li>Vmware ESXi 管理與備份。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 範例 3: 更早的工作 -->
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <p class="date">2018年06月 - 2020年07月</p>
+                    <h4>亞旭電腦</h4>
+                    <h5>雲端系統工程師</h5>
+                    <ul>
+                        <li>擔任 AWS 雲端工程師，進行雲端配置與程式碼佈署。</li>
+                        <li>使用技術：AWS, Python, bash。</li>
+                        <li>負責AWS , Azure 公有雲端產品建制維運。</li>
+                        <li>負責專案客戶建制維運。</li>
+                        <li>ISO 27001 資安規範導入負責人。</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- 範例 3: 更早的工作 -->
+            <div class="timeline-item left">
+                <div class="timeline-content">
+                    <p class="date">2015年04月 - 2018年05月</p>
+                    <h4>綠色運算</h4>
+                    <h5>郵件系統工程師</h5>
+                    <ul>
+                        <li>擔任郵件工程師，並進行建制與後續服務。</li>
+                        <li>使用技術：FreeBSD, Postfix。</li>
+                        <li>負責私有雲端產品講師與建制。</li>
+                        <li>負責郵件系統產品建制與管理維運。</li>
+                        <li>負責郵件稽核 & 備存導入。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 範例 3: 更早的工作 -->
+            <div class="timeline-item right">
+                <div class="timeline-content">
+                    <p class="date">2001年10月 - 2015年04月</p>
+                    <h4>瓏群資訊</h4>
+                    <h5>資深工程師</h5>
+                    <ul>
+                        <li>擔任系統整合工程師，並協助銷售後維護。</li>
+                        <li>使用技術：CentOS, OA, Firewall。</li>
+                        <li>負責一般網路故障排除。</li>
+                        <li>負責嵌入式網路設備設定安裝。</li>
+                        <li>負責伺服器維護。</li>
+                        <li>負責一般 PC 維修。</li>
+                        <li>負責企業 OA 代管。</li>
+                        <li>負責企業網路建制。</li>
+                        <li>負責網路設備設定。</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 您可以根據需要複製更多 .timeline-item 區塊 -->
+
         </div>
-        <section class="portfolio-grid">
-            <!-- {/* --- Populate cards based on original new-infrastructure.html --- */} -->
-             <div class="card" data-lightbox-src="https://raw.githubusercontent.com/alengbk/alengbk.github.io/master/mysql-dr-01.png">
-                <img src="https://raw.githubusercontent.com/alengbk/alengbk.github.io/master/mysql-dr-01.png" alt="MySQL-DR 基礎設施架構圖">
-                <div class="card-content">
-                    <h4>MySQL 備份基礎設施架構圖</h4>
-                    <p>MySQL 備份策略<br>1.DELL EMC 使用硬體快照。<br>2.使用 MySQL 原生 Master-Slave 架構。<br>3.使用 Percona XtraBackup 進行差異備份。</p>
-                </div>
-            </div>
-
-             <div class="card" data-lightbox-src="https://raw.githubusercontent.com/alengbk/alengbk.github.io/master/mysql-dr-02.png">
-                <img src="https://raw.githubusercontent.com/alengbk/alengbk.github.io/master/mysql-dr-02.png" alt="MySQL DR 雲端設施架構圖">
-                <div class="card-content">
-                    <h4>MySQL 備份雲端設施架構圖</h4>
-                    <p>MySQL 雲端備份策略<br>1.使用 MySQL 的 Master-Slave 架構，將 Slave 透過 VPN 同步到 AWS EC2 主機A，主機A 再同步到 EC2 主機B。<br>2.主機B 使用 Percona XtraBackup 進行差異備份到 AWS EFS 長期保存。<br>3.搭配高效 TiDB 將讀寫分離。</p>
-                </div>
-            </div>
-
-             <div class="card" data-lightbox-src="https://raw.githubusercontent.com/alengbk/alengbk.github.io/master/mysql-dr-03.png">
-                <img src="https://raw.githubusercontent.com/alengbk/alengbk.github.io/master/mysql-dr-03.png" alt="XtraBackup 雲端">
-                <div class="card-content">
-                    <h4>雲上使用 Xtrabackup 備份策略</h4>
-                    <p>使用 Open source 的 Percona XtraBackup 進行自動化備份。</p>
-                </div>
-            </div>
-
-             <div class="card" data-lightbox-src="https://raw.githubusercontent.com/alengbk/alengbk.github.io/master/git-jar.png">
-                <img src="https://raw.githubusercontent.com/alengbk/alengbk.github.io/master/git-jar.png" alt="GitLab_S3">
-                <div class="card-content">
-                    <h4>更版 jar 檔自動備份</h4>
-                    <p>更版過程中，主動備份每次更版的版本，並儲存於 AWS S3 Bucket。</p>
-                </div>
-            </div>
-
-             <div class="card" data-lightbox-src="https://raw.githubusercontent.com/alengbk/alengbk.github.io/master/DR-ES.png">
-                <img src="https://raw.githubusercontent.com/alengbk/alengbk.github.io/master/DR-ES.png" alt="DR-ES">
-                <div class="card-content">
-                    <h4>ElasticSearch 設施架構圖</h4>
-                    <p>ES 遷移架構圖<br>1.新增雲端 Node:04<br>2.切換讀取於 Node:04<br>3.IDC 建立快照並同步到 AWS<br>4.還原 AWS 快照<br>5.切換來源至AWS。</p>
-                </div>
-            </div>
-
-             <div class="card" data-lightbox-src="https://raw.githubusercontent.com/alengbk/alengbk.github.io/master/zabbix_protheus.png">
-                <img src="https://raw.githubusercontent.com/alengbk/alengbk.github.io/master/zabbix_protheus.png" alt="Zabbix">
-                <div class="card-content">
-                    <h4>Zabbix & Protheus 監控架構</h4>
-                    <p>使用 Zabbix 監控系統可用性，Protheus 監控 Java 程式健康度。</p>
-                </div>
-            </div>
-
-             <div class="card" data-lightbox-src="https://raw.githubusercontent.com/alengbk/alengbk.github.io/master/arcsight.png">
-                <img src="https://raw.githubusercontent.com/alengbk/alengbk.github.io/master/arcsight.png" alt="Arc">
-                <div class="card-content">
-                    <h4>使用 ArcSight & JumpSerevr 管理登入</h4>
-                    <p>透過 JumpServer 控管(紀錄)使用者登入行為，並於 ArcSight 紀錄以供查證。</p>
-                </div>
-            </div>
+    </div>
 
 
-            <!-- {/* --- Add more cards here if there were more items --- */} -->
-        </section>
+
     </main>
     <footer> <p>&copy; 2025 Allen. All rights reserved.</p> </footer>
     <div id="lightbox-overlay" class="lightbox-overlay"> <div id="lightbox-container" class="lightbox-container"> <span id="lightbox-close" class="lightbox-close" title="關閉">&times;</span> <div id="lightbox-content" class="lightbox-content"></div> </div> </div>
