@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Allen - 個人證照區 (Certificates)</title>
-    <!-- CSS 樣式 -->
     <style>
         /* --- 基本重設與全域設定 --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -27,6 +26,16 @@
         main { flex-grow: 1; max-width: 1100px; margin: 2rem auto; padding: 0 1.5rem; width: 100%; }
         .title-container { text-align: center; margin-bottom: 2rem; }
         main h2 { text-align: center; color: #333; font-size: 2rem; border-bottom: 2px solid #007bff; padding-bottom: 0.5rem; display: inline-block; margin-bottom: 0; }
+        
+        /* --- 新增：分類區塊與標題樣式 --- */
+        .category-section { margin-bottom: 3rem; }
+        .category-title {
+            font-size: 1.7rem;
+            color: #333;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #6c757d;
+        }
         /* --- 作品集網格 --- */
         .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
         /* --- 卡片樣式 --- */
@@ -50,8 +59,8 @@
         .lightbox-close { position: absolute; top: 10px; right: 15px; font-size: 2rem; color: #333; cursor: pointer; line-height: 1; z-index: 2010; background: rgba(255,255,255,0.7); border-radius: 50%; width: 30px; height: 30px; display: flex; justify-content: center; align-items: center; }
         .lightbox-close:hover { color: #000; background: rgba(255,255,255,0.9); }
         /* --- 響應式 --- */
-        @media (max-width: 768px) { header nav { flex-direction: column; align-items: center; } header nav ul { margin-top: 1rem; justify-content: center; } header nav ul li { margin-left: 0.5rem; margin-right: 0.5rem; } main h2 { font-size: 1.8rem; } .portfolio-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; } }
-        @media (max-width: 480px) { main h2 { font-size: 1.5rem; } .portfolio-grid { grid-template-columns: 1fr; } header nav ul li { margin-left: 0.3rem; margin-right: 0.3rem; } header nav ul li a { padding: 0.3rem 0.6rem; } .card img { height: 150px; } .card-content { padding: 0.8rem; } .card-content h4 { font-size: 1.05rem; } .card-content p { font-size: 0.85rem; } }
+        @media (max-width: 768px) { header nav { flex-direction: column; align-items: center; } header nav ul { margin-top: 1rem; justify-content: center; } header nav ul li { margin-left: 0.5rem; margin-right: 0.5rem; } main h2 { font-size: 1.8rem; } .portfolio-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; } .category-title {font-size: 1.5rem;} }
+        @media (max-width: 480px) { main h2 { font-size: 1.5rem; } .portfolio-grid { grid-template-columns: 1fr; } header nav ul li { margin-left: 0.3rem; margin-right: 0.3rem; } header nav ul li a { padding: 0.3rem 0.6rem; } .card img { height: 150px; } .card-content { padding: 0.8rem; } .card-content h4 { font-size: 1.05rem; } .card-content p { font-size: 0.85rem; } .category-title {font-size: 1.3rem;} }
     </style>
 </head>
 <body>
@@ -75,103 +84,121 @@
         <div class="title-container">
             <h2>證照 (Certificates)</h2>
         </div>
-        <section class="portfolio-grid">
-            <div class="card" data-lightbox-src="https://alengbk.github.io/RHCT.png">
-                <img src="https://alengbk.github.io/RHCT.png" alt="RHCT 證照縮圖">
-                <div class="card-content"><h4>Red Hat - Red Hat Certified Technician (RHCT)</h4><p>入門級 Linux 系統管理員認證，具備執行基本系統管理任務的能力。</p></div>
-            </div>
-            <div class="card" data-lightbox-src="https://alengbk.github.io/RHCE.png">
-                <img src="https://alengbk.github.io/RHCE.png" alt="RHCE 證照縮圖">
-                <div class="card-content"><h4>Red Hat - Red Hat Certified Enginner (RHCE)</h4><p>進階的 Linux 系統管理員認證，具備更深入的 Linux 系統管理技能，並且能夠使用 Ansible 來完成自動化任務。。</p></div>
-            </div>
-            <div class="card" data-lightbox-src="https://alengbk.github.io/AZ-900.png">
-                <img src="https://alengbk.github.io/AZ-900.png" alt="AZ-900 證照縮圖">
-                <div class="card-content"><h4>Microsoft Azure Fundamentals (AZ-900)</h4><p>入門級的 Microsoft Azure 認證，具備對雲端概念、Azure 服務和 Azure 管理的基本知識。</p></div>
-            </div>
-            <div class="card" data-lightbox-src="https://alengbk.github.io/AWS-SAA.png">
-                <img src="https://alengbk.github.io/AWS-SAA.png" alt="AWS-SAA 證照縮圖">
-                <div class="card-content"><h4>AWS Certified Solutions Architect – Associate (AWS-SAA)</h4><p>AWS 提供的一項助理級認證，具備設計和部署 AWS 上安全且穩健的應用程式和系統的能力。</p></div>
-            </div>
-            <div class="card" data-lightbox-src="https://alengbk.github.io/NPSA.png">
-                 <img src="https://alengbk.github.io/NPSA.png" alt="NPSA 證照縮圖">
-                 <div class="card-content"><h4>Network Security of Packet Analysis Course (NSPA)
-</h4><p>具備網路封包擷取與網路行為分析能力，進行網路事件的資訊蒐集與封包判讀。</p></div>
-            </div>
-            <div class="card" data-lightbox-src="https://alengbk.github.io/CEH.png">
-                 <img src="https://alengbk.github.io/CEH.png" alt="CEH 證照縮圖">
-                 <div class="card-content"><h4>Certified Ethical Hacker (CEH)</h4><p>由 EC-Council (國際電子商務顧問委員會) 頒發的資訊安全專業認證，具備評估和保護資訊系統免受網路威脅的知識和技能。</p></div>
-            </div>
-             <div class="card" data-lightbox-src="https://alengbk.github.io/CEHP.jpg">
-                 <img src="https://alengbk.github.io/CEHP.jpg" alt="CEHP 證照縮圖">
-                 <div class="card-content"><h4>Certified Ethical Hacker Practical (CEHP)</h4><p>具備在真實環境中識別並利用安全漏洞的實戰能力，能有效提升組織的網路安全防禦。。</p></div>
-            </div>
-            </div>
-             <div class="card" data-lightbox-src="https://alengbk.github.io/CEH-Master.jpg">
-                 <img src="https://alengbk.github.io/CEH-Master.jpg" alt="CEH Master 證照縮圖">
-                 <div class="card-content"><h4>Certified Ethical Hacker Master (CEH Master)</h4><p>CEH 的進階版本，具備資安知識，並通過了實作型的考試（CEH Practical），能夠實際操作與執行滲透測試與防禦技能。</p></div>
-            </div>
-             <div class="card" data-lightbox-src="https://alengbk.github.io/GCP-Completion.jpg">
-                 <img src="https://alengbk.github.io/GCP-Completion.jpg" alt="Google 數位人才結業證書">
-                 <div class="card-content"><h4>Google 數位人才探索計畫-課程結業證書</h4><p>Google 提供的數位技能培訓，涵蓋雲端工程與包含 AI 應用及開發課程。</p></div>
-            </div>
-            </div>
-             <div class="card" data-lightbox-src="https://alengbk.github.io/CISSP-Course.png">
-                 <img src="https://alengbk.github.io/CISSP-Course.png" alt="CISSP 結業證書">
-                 <div class="card-content"><h4>CISSP 課程結業證書</h4><p>CISSP（認證資訊系統安全專家，Certified Information Systems Security Professional）該認證涵蓋了資訊安全通識體系(CBK)的八大領域，有助於專業人士全面理解風險管理、安全架構、存取控制、安全營運等多方面的資訊安全知識。</p></div>
-            </div>
-            <div class="card" data-lightbox-src="https://alengbk.github.io/Gemini-Certified-Educator.png">
-                <img src="https://alengbk.github.io/Gemini-Certified-Educator.png" alt="Gemini-AI-01 證照縮圖">
-                <div class="card-content"><h4>AI - Gemini-Certified-Educator</h4><p>「Gemini認證教師證書」（Gemini Certification for Educators）是 Google 在 2025 年專為教育工作者設計的一張免費 AI 認證。這張證書不僅僅是證明懂 AI，更是肯定具備負責任地將生成式 AI 工具（如 Gemini 和 NotebookLM）融入教學現場的能力。</p></div>
-            </div>
 
-
-
+        <section class="category-section">
+            <h3 class="category-title">系統類 (System)</h3>
+            <div class="portfolio-grid">
+                <div class="card" data-lightbox-src="https://alengbk.github.io/RHCT.png">
+                    <img src="https://alengbk.github.io/RHCT.png" alt="RHCT 證照縮圖">
+                    <div class="card-content"><h4>Red Hat - Red Hat Certified Technician (RHCT)</h4><p>入門級 Linux 系統管理員認證，具備執行基本系統管理任務的能力。</p></div>
+                </div>
+                <div class="card" data-lightbox-src="https://alengbk.github.io/RHCE.png">
+                    <img src="https://alengbk.github.io/RHCE.png" alt="RHCE 證照縮圖">
+                    <div class="card-content"><h4>Red Hat - Red Hat Certified Enginner (RHCE)</h4><p>進階的 Linux 系統管理員認證，具備更深入的 Linux 系統管理技能，並且能夠使用 Ansible 來完成自動化任務。。</p></div>
+                </div>
+            </div>
         </section>
 
+        <section class="category-section">
+            <h3 class="category-title">雲端類 (Cloud)</h3>
+            <div class="portfolio-grid">
+                <div class="card" data-lightbox-src="https://alengbk.github.io/AZ-900.png">
+                    <img src="https://alengbk.github.io/AZ-900.png" alt="AZ-900 證照縮圖">
+                    <div class="card-content"><h4>Microsoft Azure Fundamentals (AZ-900)</h4><p>入門級的 Microsoft Azure 認證，具備對雲端概念、Azure 服務和 Azure 管理的基本知識。</p></div>
+                </div>
+                <div class="card" data-lightbox-src="https://alengbk.github.io/AWS-SAA.png">
+                    <img src="https://alengbk.github.io/AWS-SAA.png" alt="AWS-SAA 證照縮圖">
+                    <div class="card-content"><h4>AWS Certified Solutions Architect – Associate (AWS-SAA)</h4><p>AWS 提供的一項助理級認證，具備設計和部署 AWS 上安全且穩健的應用程式和系統的能力。</p></div>
+                </div>
+                <div class="card" data-lightbox-src="https://alengbk.github.io/GCP-Completion.jpg">
+                    <img src="https://alengbk.github.io/GCP-Completion.jpg" alt="Google 數位人才結業證書">
+                    <div class="card-content"><h4>Google 數位人才探索計畫-課程結業證書</h4><p>Google 提供的數位技能培訓，涵蓋雲端工程與包含 AI 應用及開發課程。</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="category-section">
+            <h3 class="category-title">資安類 (Security)</h3>
+            <div class="portfolio-grid">
+                <div class="card" data-lightbox-src="https://alengbk.github.io/NPSA.png">
+                     <img src="https://alengbk.github.io/NPSA.png" alt="NPSA 證照縮圖">
+                     <div class="card-content"><h4>Network Security of Packet Analysis Course (NSPA)</h4><p>具備網路封包擷取與網路行為分析能力，進行網路事件的資訊蒐集與封包判讀。</p></div>
+                </div>
+                <div class="card" data-lightbox-src="https://alengbk.github.io/CEH.png">
+                     <img src="https://alengbk.github.io/CEH.png" alt="CEH 證照縮圖">
+                     <div class="card-content"><h4>Certified Ethical Hacker (CEH)</h4><p>由 EC-Council (國際電子商務顧問委員會) 頒發的資訊安全專業認證，具備評估和保護資訊系統免受網路威脅的知識和技能。</p></div>
+                </div>
+                 <div class="card" data-lightbox-src="https://alengbk.github.io/CEHP.jpg">
+                     <img src="https://alengbk.github.io/CEHP.jpg" alt="CEHP 證照縮圖">
+                     <div class="card-content"><h4>Certified Ethical Hacker Practical (CEHP)</h4><p>具備在真實環境中識別並利用安全漏洞的實戰能力，能有效提升組織的網路安全防禦。。</p></div>
+                </div>
+                 <div class="card" data-lightbox-src="https://alengbk.github.io/CEH-Master.jpg">
+                     <img src="https://alengbk.github.io/CEH-Master.jpg" alt="CEH Master 證照縮圖">
+                     <div class="card-content"><h4>Certified Ethical Hacker Master (CEH Master)</h4><p>CEH 的進階版本，具備資安知識，並通過了實作型的考試（CEH Practical），能夠實際操作與執行滲透測試與防禦技能。</p></div>
+                </div>
+                 <div class="card" data-lightbox-src="https://alengbk.github.io/CISSP-Course.png">
+                     <img src="https://alengbk.github.io/CISSP-Course.png" alt="CISSP 結業證書">
+                     <div class="card-content"><h4>CISSP 課程結業證書</h4><p>CISSP（認證資訊系統安全專家，Certified Information Systems Security Professional）該認證涵蓋了資訊安全通識體系(CBK)的八大領域，有助於專業人士全面理解風險管理、安全架構、存取控制、安全營運等多方面的資訊安全知識。</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="category-section">
+            <h3 class="category-title">AI 類 (AI)</h3>
+            <div class="portfolio-grid">
+                <div class="card" data-lightbox-src="https://alengbk.github.io/Gemini-Certified-Educator.png">
+                    <img src="https://alengbk.github.io/Gemini-Certified-Educator.png" alt="Gemini-AI-01 證照縮圖">
+                    <div class="card-content"><h4>AI - Gemini-Certified-Educator</h4><p>「Gemini認證教師證書」（Gemini Certification for Educators）是 Google 在 2025 年專為教育工作者設計的一張免費 AI 認證。這張證書不僅僅是證明懂 AI，更是肯定具備負責任地將生成式 AI 工具（如 Gemini 和 NotebookLM）融入教學現場的能力。</p></div>
+                </div>
+            </div>
+        </section>
 
     </main>
     <footer> <p>&copy; 2025 Allen. All rights reserved.</p> </footer>
     <div id="lightbox-overlay" class="lightbox-overlay"> <div id="lightbox-container" class="lightbox-container"> <span id="lightbox-close" class="lightbox-close" title="關閉">&times;</span> <div id="lightbox-content" class="lightbox-content"></div> </div> </div>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const portfolioGrid = document.querySelector('.portfolio-grid');
+            const portfolioGrids = document.querySelectorAll('.portfolio-grid'); // 改為選取所有 grid
             const lightboxOverlay = document.getElementById('lightbox-overlay');
             const lightboxContainer = document.getElementById('lightbox-container');
             const lightboxContent = document.getElementById('lightbox-content');
             const lightboxClose = document.getElementById('lightbox-close');
 
-            if (!portfolioGrid || !lightboxOverlay || !lightboxContent || !lightboxClose) {
+            if (!lightboxOverlay || !lightboxContent || !lightboxClose) {
                 console.error('Lightbox elements not found!');
                 return;
             }
 
-            portfolioGrid.addEventListener('click', (event) => {
-                const cardElement = event.target.closest('div.card');
-                const isCardLinkClick = event.target.closest('a.card-link');
+            // 為每一個 portfolio-grid 綁定事件
+            portfolioGrids.forEach(grid => {
+                grid.addEventListener('click', (event) => {
+                    const cardElement = event.target.closest('div.card');
+                    const isCardLinkClick = event.target.closest('a.card-link');
 
-                if (cardElement && !isCardLinkClick) {
-                    const mediaUrl = cardElement.dataset.lightboxSrc;
+                    if (cardElement && !isCardLinkClick) {
+                        const mediaUrl = cardElement.dataset.lightboxSrc;
 
-                    if (mediaUrl) {
-                        const lowerUrl = mediaUrl.toLowerCase();
+                        if (mediaUrl) {
+                            const lowerUrl = mediaUrl.toLowerCase();
 
-                        if (/\.pdf$/.test(lowerUrl)) {
-                            window.open(mediaUrl, '_blank', 'noopener,noreferrer');
+                            if (/\.pdf$/.test(lowerUrl)) {
+                                window.open(mediaUrl, '_blank', 'noopener,noreferrer');
+                            }
+                            else if (/\.(jpg|jpeg|png|gif|bmp|webp|svg|mp4|webm|ogg|mov)$/.test(lowerUrl)) {
+                                event.preventDefault();
+                                openLightbox(mediaUrl);
+                            }
+                            else {
+                                 console.warn("Unsupported media type for click action:", mediaUrl);
+                            }
+
+                        } else {
+                            console.warn('Card is missing data-lightbox-src attribute:', cardElement);
                         }
-                        else if (/\.(jpg|jpeg|png|gif|bmp|webp|svg|mp4|webm|ogg|mov)$/.test(lowerUrl)) {
-                            event.preventDefault();
-                            openLightbox(mediaUrl);
-                        }
-                        else {
-                             console.warn("Unsupported media type for click action:", mediaUrl);
-                             // window.open(mediaUrl, '_blank', 'noopener,noreferrer'); // 可選：未知格式也嘗試開啟
-                        }
-
-                    } else {
-                        console.warn('Card is missing data-lightbox-src attribute:', cardElement);
                     }
-                }
+                });
             });
+
 
             function openLightbox(url) {
                 lightboxContent.innerHTML = '<p style="color:#ccc; padding: 20px;">載入中...</p>';
