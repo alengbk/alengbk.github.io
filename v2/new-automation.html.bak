@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aleng - 自動化 (Automation)</title> {/* Changed Title */}
+    <!-- CSS 樣式 -->
+    <style>
+        /* --- 基本重設與全域設定 --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; background-color: #f4f4f4; color: #333; display: flex; flex-direction: column; min-height: 100vh; }
+        body.lightbox-open { overflow: hidden; }
+        a { color: #007bff; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        img, video { max-width: 100%; height: auto; display: block; }
+        /* --- 頁首與導覽 --- */
+        header { background-color: #333; color: #fff; padding: 1rem 0; box-shadow: 0 2px 5px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+        header nav { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; }
+        header h1 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        header h1 a { color: #fff; text-decoration: none; }
+        header nav ul { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; padding-left: 0; }
+        header nav ul li { margin-left: 1.5rem; margin-bottom: 0.5rem; }
+        header nav ul li a { color: #fff; padding: 0.4rem 0.8rem; transition: background-color 0.2s ease, color 0.2s ease; border-radius: 4px; text-decoration: none; display: inline-block; }
+        header nav ul li a:hover { background-color: #FACC15; color: #333; text-decoration: none; }
+        header nav ul li a.active { background-color: #555; color: #fff; text-decoration: none; }
+        /* --- 主要內容區域 --- */
+        main { flex-grow: 1; max-width: 1100px; margin: 2rem auto; padding: 0 1.5rem; width: 100%; }
+        .title-container { text-align: center; margin-bottom: 2rem; }
+        main h2 { text-align: center; color: #333; font-size: 2rem; border-bottom: 2px solid #007bff; padding-bottom: 0.5rem; display: inline-block; margin-bottom: 0; }
+        /* --- 作品集網格 --- */
+        .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        /* --- 卡片樣式 --- */
+        .card { background-color: #fff; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer; height: 100%; }
+        .card:hover { transform: translateY(-5px); box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); }
+        .card img { width: 100%; height: 200px; object-fit: contain; background-color: #eee; }
+        .card video { width: 100%; height: 200px; object-fit: cover; background-color: #000; } /* Style for video thumbnails */
+        .card-content { padding: 1rem; flex-grow: 1; display: flex; flex-direction: column; }
+        .card-content h4 { margin-bottom: 0.5rem; font-size: 1.15rem; color: #333; }
+        .card-content p { font-size: 0.9rem; color: #666; flex-grow: 1; margin-bottom: 0; }
+        .card-content .card-link { margin-top: 1rem; color: #007bff; text-decoration: none; font-weight: bold; align-self: flex-start; }
+        .card-content .card-link:hover { text-decoration: underline; }
+        /* --- 頁腳 --- */
+        footer { background-color: #333; color: #fff; text-align: center; padding: 1rem 0; margin-top: 2rem; font-size: 0.9rem; }
+        /* --- Lightbox --- */
+        .lightbox-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); display: flex; justify-content: center; align-items: center; z-index: 2000; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0s linear 0.3s; padding: 15px; }
+        .lightbox-overlay.visible { opacity: 1; visibility: visible; transition: opacity 0.3s ease; }
+        .lightbox-container { position: relative; background: #fff; padding: 20px; border-radius: 8px; max-width: 90%; max-height: 90vh; overflow: auto; box-shadow: 0 5px 15px rgba(0,0,0,0.3); transform: scale(0.95); transition: transform 0.3s ease; }
+        .lightbox-overlay.visible .lightbox-container { transform: scale(1); }
+        .lightbox-content { display: flex; justify-content: center; align-items: center; min-height: 100px; }
+        .lightbox-content img, .lightbox-content video { max-width: 100%; max-height: calc(90vh - 80px); object-fit: contain; }
+        .lightbox-close { position: absolute; top: 10px; right: 15px; font-size: 2rem; color: #333; cursor: pointer; line-height: 1; z-index: 2010; background: rgba(255,255,255,0.7); border-radius: 50%; width: 30px; height: 30px; display: flex; justify-content: center; align-items: center; }
+        .lightbox-close:hover { color: #000; background: rgba(255,255,255,0.9); }
+        /* --- 響應式 --- */
+        @media (max-width: 768px) { header nav { flex-direction: column; align-items: center; } header nav ul { margin-top: 1rem; justify-content: center; } header nav ul li { margin-left: 0.5rem; margin-right: 0.5rem; } main h2 { font-size: 1.8rem; } .portfolio-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; } }
+        @media (max-width: 480px) { main h2 { font-size: 1.5rem; } .portfolio-grid { grid-template-columns: 1fr; } header nav ul li { margin-left: 0.3rem; margin-right: 0.3rem; } header nav ul li a { padding: 0.3rem 0.6rem; } .card img, .card video { height: 150px; } .card-content { padding: 0.8rem; } .card-content h4 { font-size: 1.05rem; } .card-content p { font-size: 0.85rem; } }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <h1><a href="#">Aleng / 作品集</a></h1>
+            <ul>
+                <li><a href="new-cert.html">證照</a></li>
+                <li><a href="new-automation.html" class="active">自動化</a></li> {/* Changed active class */}
+                <li><a href="new-bash.html">Bash</a></li>
+                <li><a href="new-python.html">Python</a></li>
+                <li><a href="new-data_analysis.html">數據分析</a></li>
+                <li><a href="new-infrastructure.html">基礎設施</a></li>
+                <li><a href="new-aws.html">AWS</a></li>
+                <li><a href="new-security.html">資安</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="title-container">
+            <h2>自動化 (Automation)</h2> {/* Changed H2 */}
+        </div>
+        <section class="portfolio-grid">
+            {/* --- Populate cards based on original new-automation.html --- */}
+            {/* Example for the video - NEEDS a thumbnail image */}
+            <div class="card" data-lightbox-src="https://alengbk.github.io/videos/auto_web.mp4">
+                 {/* You NEED to create and link a thumbnail image here */}
+                 <img src="https://via.placeholder.com/300x200/000000/FFFFFF?text=Video+Thumbnail" alt="自動化網頁操作影片縮圖">
+                 {/* <video> tag doesn't work well as a thumbnail in this layout */}
+                <div class="card-content">
+                    <h4>自動化網頁操作範例</h4>
+                    <p>展示使用自動化工具進行網頁互動的影片。</p>
+                </div>
+            </div>
+
+             {/* Example for the image */}
+             <div class="card" data-lightbox-src="https://alengbk.github.io/images/auto-script.png">
+                <img src="https://alengbk.github.io/images/auto-script.png" alt="自動化腳本截圖">
+                <div class="card-content">
+                    <h4>自動化腳本範例</h4>
+                    <p>一個用於執行特定自動化任務的腳本截圖。</p>
+                </div>
+            </div>
+
+            {/* --- Add more cards here if there were more items --- */}
+        </section>
+    </main>
+    <footer> <p>&copy; 2024 Aleng. All rights reserved.</p> </footer>
+    <div id="lightbox-overlay" class="lightbox-overlay"> <div id="lightbox-container" class="lightbox-container"> <span id="lightbox-close" class="lightbox-close" title="關閉">&times;</span> <div id="lightbox-content" class="lightbox-content"></div> </div> </div>
+    <script> /* Lightbox JavaScript (Keep unchanged) */ document.addEventListener('DOMContentLoaded',()=>{const t=document.querySelector('.portfolio-grid'),o=document.getElementById('lightbox-overlay'),e=document.getElementById('lightbox-container'),n=document.getElementById('lightbox-content'),i=document.getElementById('lightbox-close');if(!t||!o||!n||!i)return void console.error('Lightbox elements not found!');t.addEventListener('click',t=>{const c=t.target.closest('div.card'),s=t.target.closest('a.card-link');if(c&&!s){t.preventDefault();const s=c.dataset.lightboxSrc;s?l(s):console.warn('Card is missing data-lightbox-src attribute:',c)}});const l=t=>{n.innerHTML='<p style="color:#ccc; padding: 20px;">載入中...</p>',a();const o=t.toLowerCase();let e;/\.(jpg|jpeg|png|gif|bmp|webp|svg)$/.test(o)?(e=document.createElement('img'),e.alt="放大檢視",e.onload=()=>{n.innerHTML='',n.appendChild(e)},e.onerror=()=>{n.innerHTML='<p style="color:#ff6b6b; padding: 20px;">圖片載入失敗</p>'},e.src=t):/\.(mp4|webm|ogg|mov)$/.test(o)?(e=document.createElement('video'),e.controls=!0,e.autoplay=!0,e.muted=!0,e.playsInline=!0,e.onloadedmetadata=()=>{n.innerHTML='',n.appendChild(e)},e.onerror=()=>{n.innerHTML='<p style="color:#ff6b6b; padding: 20px;">影片載入失敗</p>'},e.src=t):(n.innerHTML=`<p style="color:#ffcc00; padding: 20px;">不支援的預覽格式。<br><a href="${t}" target="_blank" rel="noopener noreferrer" style="color:#fff;">點此在新分頁開啟</a></p>`,console.warn("Unsupported media type for lightbox:",t))};function a(){o.classList.add('visible'),document.body.classList.add('lightbox-open')}function c(){o.classList.remove('visible'),document.body.classList.remove('lightbox-open');const t=n.querySelector('video');t&&(t.pause(),t.removeAttribute('src'),t.load()),n.innerHTML=''}i.addEventListener('click',c),o.addEventListener('click',t=>{t.target===o&&c()}),document.addEventListener('keydown',t=>{"Escape"===t.key&&o.classList.contains('visible')&&c()})}); </script>
+</body>
+</html>
