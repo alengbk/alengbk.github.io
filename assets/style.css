@@ -1,0 +1,299 @@
+/* ==========================================================================
+   Allen — Enterprise Infrastructure & Platform Engineer
+   共用樣式 (Shared Styles)
+   ========================================================================== */
+
+/* --- 基本重設與全域設定 --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: 'Segoe UI', 'PingFang TC', 'Microsoft JhengHei', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.7;
+    background-color: #f5f7fa;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+body.lightbox-open { overflow: hidden; }
+a { color: #0b62c4; text-decoration: none; }
+a:hover { text-decoration: underline; }
+img, video { max-width: 100%; height: auto; display: block; }
+
+/* --- 頁首與導覽 --- */
+header {
+    background-color: #1f2937;
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+header nav {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0.9rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+header .brand { font-size: 1.25rem; font-weight: 700; line-height: 1.3; }
+header .brand a { color: #fff; text-decoration: none; }
+header .brand small {
+    display: block;
+    font-size: 0.72rem;
+    font-weight: 400;
+    color: #cbd5e1;
+    letter-spacing: 0.5px;
+}
+header nav ul {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    padding-left: 0;
+}
+header nav ul li a {
+    color: #e5e7eb;
+    padding: 0.4rem 0.8rem;
+    border-radius: 6px;
+    transition: background-color 0.2s ease, color 0.2s ease;
+    display: inline-block;
+    font-size: 0.95rem;
+}
+header nav ul li a:hover { background-color: #FACC15; color: #1f2937; text-decoration: none; }
+header nav ul li a.active { background-color: #0b62c4; color: #fff; text-decoration: none; }
+
+/* --- 主要內容區域 --- */
+main { flex-grow: 1; width: 100%; max-width: 1140px; margin: 2.5rem auto; padding: 0 1.5rem; }
+.title-container { text-align: center; margin-bottom: 2.5rem; }
+main h2 {
+    color: #1f2937;
+    font-size: 1.9rem;
+    border-bottom: 3px solid #0b62c4;
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+.page-subtitle { text-align: center; color: #6b7280; margin-top: 0.6rem; max-width: 760px; margin-left: auto; margin-right: auto; }
+
+/* --- 段落標題 --- */
+.section-title {
+    font-size: 1.45rem;
+    color: #1f2937;
+    margin: 3rem 0 1.25rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid #e5e7eb;
+}
+.section-title .en { color: #0b62c4; font-weight: 400; font-size: 0.85rem; display: block; }
+
+/* --- 卡片通用 --- */
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    padding: 1.5rem;
+    border: 1px solid #eef1f5;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.card:hover { transform: translateY(-4px); box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12); }
+.grid { display: grid; gap: 1.25rem; }
+.grid.cols-2 { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+.grid.cols-3 { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+.grid.cols-4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+
+/* --- 首頁 Hero --- */
+.hero {
+    background: linear-gradient(135deg, #1f2937 0%, #0b3d91 100%);
+    color: #fff;
+    border-radius: 12px;
+    padding: 3rem 2.5rem;
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+.hero h1 { font-size: 2.1rem; font-weight: 700; margin-bottom: 0.5rem; }
+.hero .role {
+    font-size: 1.2rem;
+    color: #FACC15;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 1rem;
+}
+.hero .brand-statement {
+    font-style: italic;
+    color: #dbeafe;
+    font-size: 1.05rem;
+    max-width: 720px;
+    margin: 0 auto 1.2rem;
+}
+.hero .philosophy {
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(250, 204, 21, 0.6);
+    color: #FACC15;
+    padding: 0.4rem 1.1rem;
+    border-radius: 30px;
+    font-size: 0.95rem;
+}
+
+/* --- 績效數字 Metrics --- */
+.metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+.metric {
+    background: #fff;
+    border-radius: 10px;
+    padding: 1.25rem 1rem;
+    text-align: center;
+    border: 1px solid #eef1f5;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+.metric .value { font-size: 1.5rem; font-weight: 700; color: #0b62c4; line-height: 1.2; }
+.metric .label { font-size: 0.82rem; color: #6b7280; margin-top: 0.3rem; }
+
+/* --- 核心能力 Tags --- */
+.tag { display: inline-block; background: #eef3fb; color: #0b3d91; border-radius: 6px; padding: 0.25rem 0.7rem; font-size: 0.82rem; margin: 0.2rem 0.15rem; }
+.tag.accent { background: #fdf6e3; color: #92600a; border: 1px solid #f5d78e; }
+
+/* --- 專案 / 能力卡片細節 --- */
+.card h4 { color: #1f2937; margin-bottom: 0.5rem; font-size: 1.15rem; }
+.card .company-tag { font-size: 0.8rem; color: #0b62c4; font-weight: 600; }
+.card p { font-size: 0.92rem; color: #4b5563; }
+.card .meta { font-size: 0.8rem; color: #9ca3af; margin-bottom: 0.4rem; }
+
+.outcome-list { list-style: none; margin-top: 0.6rem; }
+.outcome-list li { font-size: 0.9rem; color: #4b5563; padding: 0.25rem 0; padding-left: 1.3rem; position: relative; }
+.outcome-list li::before { content: "✓"; position: absolute; left: 0; color: #0b62c4; font-weight: 700; }
+.outcome-list li strong { color: #0b62c4; }
+
+.project-section { background: #fff; border-radius: 10px; padding: 2rem; margin-bottom: 1.75rem; border: 1px solid #eef1f5; box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+.project-section h3 { color: #1f2937; font-size: 1.35rem; margin-bottom: 0.2rem; }
+.project-section .sub { color: #0b62c4; font-weight: 600; font-size: 0.95rem; margin-bottom: 1rem; }
+.project-section .flow {
+    background: #f8fafc;
+    border-left: 3px solid #0b62c4;
+    padding: 0.9rem 1.1rem;
+    margin: 0.8rem 0;
+    font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+    font-size: 0.85rem;
+    color: #374151;
+    white-space: pre-line;
+}
+.dl-table { width: 100%; border-collapse: collapse; margin-top: 0.8rem; font-size: 0.92rem; }
+.dl-table th, .dl-table td { text-align: left; padding: 0.6rem 0.75rem; border-bottom: 1px solid #eef1f5; vertical-align: top; }
+.dl-table th { width: 140px; color: #0b3d91; font-weight: 600; background: #f8fafc; white-space: nowrap; }
+.dl-table tr:last-child th, .dl-table tr:last-child td { border-bottom: none; }
+
+/* --- 時間軸 Timeline --- */
+.timeline { position: relative; max-width: 960px; margin: 0 auto; padding: 1rem 0; }
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background-color: #0b62c4;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -2px;
+    border-radius: 2px;
+}
+.timeline-item { padding: 0.75rem 2.5rem; position: relative; width: 50%; }
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    background-color: #fff;
+    border: 4px solid #FACC15;
+    top: 24px;
+    border-radius: 50%;
+    z-index: 1;
+}
+.timeline-item.left { left: 0; }
+.timeline-item.right { left: 50%; }
+.timeline-item.left::after { right: -10px; }
+.timeline-item.right::after { left: -10px; }
+.timeline-content {
+    background: #fff;
+    padding: 1.25rem 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.07);
+    border: 1px solid #eef1f5;
+}
+.timeline-content .date { font-size: 0.82rem; font-weight: 700; color: #0b62c4; margin-bottom: 0.25rem; }
+.timeline-content h4 { font-size: 1.2rem; color: #1f2937; }
+.timeline-content .role { color: #0b62c4; font-weight: 600; font-size: 0.95rem; margin-bottom: 0.6rem; }
+.timeline-content .scope { font-size: 0.92rem; color: #4b5563; margin-bottom: 0.6rem; }
+.timeline-content ul { list-style: none; padding-left: 0; }
+.timeline-content ul li { font-size: 0.9rem; color: #4b5563; padding: 0.22rem 0 0.22rem 1.2rem; position: relative; }
+.timeline-content ul li::before { content: "▸"; position: absolute; left: 0; color: #0b62c4; }
+.timeline-content .perf {
+    margin-top: 0.6rem;
+    background: #fdf6e3;
+    border-left: 3px solid #FACC15;
+    padding: 0.6rem 0.9rem;
+    font-size: 0.9rem;
+    color: #6b4a0a;
+    border-radius: 0 6px 6px 0;
+}
+.timeline-content .perf strong { color: #92600a; }
+
+/* --- 作品集卡片 --- */
+.portfolio-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+.portfolio-grid .card { padding: 0; overflow: hidden; cursor: pointer; }
+.portfolio-grid .card img { width: 100%; height: 200px; object-fit: contain; background-color: #f8fafc; }
+.portfolio-grid .card-content { padding: 1rem 1.25rem 1.25rem; }
+.portfolio-grid .card-content h4 { margin-bottom: 0.4rem; font-size: 1.05rem; }
+.portfolio-grid .card-content p { font-size: 0.87rem; color: #6b7280; margin-bottom: 0; }
+.card-category { display: inline-block; font-size: 0.72rem; font-weight: 700; color: #0b62c4; background: #eef3fb; border-radius: 4px; padding: 0.15rem 0.5rem; margin-bottom: 0.4rem; }
+
+/* --- 證照 --- */
+.category-section { margin-bottom: 2.75rem; }
+.category-title {
+    font-size: 1.4rem;
+    color: #1f2937;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 2px solid #e5e7eb;
+}
+.category-title .en { color: #9ca3af; font-weight: 400; font-size: 0.85rem; margin-left: 0.4rem; }
+
+/* --- 頁腳 --- */
+footer { background-color: #1f2937; color: #cbd5e1; text-align: center; padding: 1.4rem 1rem; margin-top: 3rem; font-size: 0.85rem; }
+footer .philosophy { color: #FACC15; margin-bottom: 0.4rem; font-size: 0.9rem; }
+
+/* --- Lightbox --- */
+.lightbox-overlay { position: fixed; inset: 0; background: rgba(15, 23, 42, 0.9); display: flex; justify-content: center; align-items: center; z-index: 2000; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0s linear 0.3s; padding: 20px; }
+.lightbox-overlay.visible { opacity: 1; visibility: visible; transition: opacity 0.3s ease; }
+.lightbox-container { position: relative; background: #fff; padding: 20px; border-radius: 10px; max-width: 92%; max-height: 92vh; overflow: auto; box-shadow: 0 10px 40px rgba(0,0,0,0.4); }
+.lightbox-content { display: flex; justify-content: center; align-items: center; min-height: 100px; }
+.lightbox-content img, .lightbox-content video { max-width: 100%; max-height: calc(92vh - 80px); object-fit: contain; }
+.lightbox-close { position: absolute; top: 10px; right: 14px; font-size: 1.9rem; color: #333; cursor: pointer; line-height: 1; z-index: 2010; background: rgba(255,255,255,0.8); border-radius: 50%; width: 32px; height: 32px; display: flex; justify-content: center; align-items: center; }
+.lightbox-close:hover { color: #000; background: #fff; }
+
+/* --- 響應式 --- */
+@media (max-width: 900px) {
+    .timeline::after { left: 22px; }
+    .timeline-item { width: 100%; padding-left: 56px; padding-right: 0; }
+    .timeline-item.left, .timeline-item.right { left: 0; }
+    .timeline-item.left::after, .timeline-item.right::after { left: 12px; }
+}
+@media (max-width: 768px) {
+    header nav { flex-direction: column; align-items: center; padding: 0.8rem 1rem; }
+    header nav ul { justify-content: center; gap: 0.1rem; }
+    header nav ul li a { font-size: 0.85rem; padding: 0.35rem 0.55rem; }
+    main { padding: 0 1rem; margin-top: 1.8rem; }
+    main h2 { font-size: 1.55rem; }
+    .hero { padding: 2rem 1.25rem; }
+    .hero h1 { font-size: 1.6rem; }
+    .hero .role { font-size: 1rem; }
+    .project-section { padding: 1.4rem; }
+    .dl-table th { white-space: normal; width: auto; }
+}
+@media (max-width: 480px) {
+    main h2 { font-size: 1.4rem; }
+    .hero h1 { font-size: 1.4rem; }
+    .metrics { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+    .metric .value { font-size: 1.25rem; }
+    .portfolio-grid { grid-template-columns: 1fr; }
+    .grid.cols-2, .grid.cols-3, .grid.cols-4 { grid-template-columns: 1fr; }
+}

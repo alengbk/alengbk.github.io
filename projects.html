@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>代表專案 — Allen</title>
+    <meta name="description" content="Allen 代表專案：Enterprise Operations Platform、Database Resilience & Performance、Cloud Security Operations。">
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="brand">
+                <a href="index.html">Allen</a>
+                <small>Enterprise Infrastructure &amp; Platform Engineer</small>
+            </div>
+            <ul>
+                <li><a href="index.html">關於我</a></li>
+                <li><a href="projects.html" class="active">代表專案</a></li>
+                <li><a href="experience.html">工作經歷</a></li>
+                <li><a href="capabilities.html">專業能力</a></li>
+                <li><a href="portfolio.html">作品集</a></li>
+                <li><a href="certifications.html">證照</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="title-container">
+            <h2>代表專案</h2>
+        </div>
+        <p class="page-subtitle">
+            這些專案的共同主軸：把 Enterprise IT 中原本依賴人工、經驗與被動處理的問題，轉化成可持續運作的平台。
+            每個專案都以「營運問題 → 架構決策 → 建立能力 → 量化成果」的方式呈現。
+        </p>
+
+        <section class="project-section">
+            <h3>01 · Enterprise Operations Platform</h3>
+            <p class="sub">自助部署平台｜Flask + Jenkins + AWX + Ansible</p>
+
+            <h4 style="margin-top:1rem;">Business Problem</h4>
+            <p style="color:#4b5563; font-size:0.95rem;">
+                API 主機約 12 台、共 108 支 Java API，RD 幾乎每天更新（最多單日 5 次），
+                原本完全依賴二線工程師人工部署，形成營運瓶頸且容易出錯。
+            </p>
+
+            <h4 style="margin-top:1rem;">Architecture Decisions</h4>
+            <div class="flow">OP 不應該輸入指令 ── 隱藏 Linux CLI，改用 Web 操作
+保留 Jenkins ── 大量併發動作與 Bash 整合，降低重構成本
+採用 AWX ── 權限與稽核管控，圖形化操作
+支援 Rollback ── 保留更版紀錄，OP 可自行調用上一版本</div>
+
+            <table class="dl-table">
+                <tr><th>Platform Built</th><td>Web-based 自助部署平台（Flask 前端 → Jenkins/AWX 執行）</td></tr>
+                <tr><th>Capability</th><td>標準化部署、自助維運、版本回滾、治理與稽核</td></tr>
+                <tr><th>Operational Outcome</th><td>每支 API 部署從 10–15 分鐘縮短至約 3 分鐘</td></tr>
+                <tr><th>Business Impact</th><td>每月節省 60+ 部署工時；穩定後約 95% 日常部署不再需要二線工程師介入</td></tr>
+            </table>
+        </section>
+
+        <section class="project-section">
+            <h3>02 · Database Resilience &amp; Performance Architecture</h3>
+            <p class="sub">MySQL 混合雲災難復原｜Percona XtraBackup + AWS</p>
+
+            <h4 style="margin-top:1rem;">Business Problem</h4>
+            <p style="color:#4b5563; font-size:0.95rem;">
+                地端 VMware 的 Backup I/O 會吃光主機資源、拖慢其他 VM；且原本使用會鎖表的 mysqldump 備份，
+                最近一版備份往往已是數月前，還原後的資料同步耗時最長。
+            </p>
+
+            <h4 style="margin-top:1rem;">Architecture Decisions</h4>
+            <div class="flow">Backup 不應碰 Production ── 由 Slave 執行 Hot Backup
+將 replication / backup workload 延伸至 AWS ── 與地端 VMware 生產負載隔離
+選擇 Percona XtraBackup ── 第一優先 Hot Backup、第二開源，後續發現可從 Slave 備份
+Read / Write Separation ── 讀取流量由雲端 Slave 分攤</div>
+
+            <table class="dl-table">
+                <tr><th>Platform Built</th><td>混合雲 MySQL 主從架構：地端 Master → VPN → AWS Slave → XtraBackup → AWS NFS</td></tr>
+                <tr><th>Capability</th><td>不停機熱備份、每日差異備份、異地備援、讀寫分離</td></tr>
+                <tr><th>Operational Outcome</th><td>MySQL Slave RTO 由約 8 小時縮短至 60 分鐘</td></tr>
+                <tr><th>Business Impact</th><td>備份不再影響服務、大幅減輕地端 VMware 負載、提升資料庫可復原性</td></tr>
+            </table>
+        </section>
+
+        <section class="project-section">
+            <h3>03 · Enterprise Cloud Security Operations Platform</h3>
+            <p class="sub">雲端安全監控平台｜WAF + OpenSearch + VirusTotal + Wazuh</p>
+
+            <h4 style="margin-top:1rem;">Business Problem</h4>
+            <p style="color:#4b5563; font-size:0.95rem;">
+                導入 AWS WAF 後只有防禦、沒有後續監控與告警；在多人共用的雲端環境中，
+                資源異動與可疑連線無法被主動發現。公司未購買 SIEM 軟體，需要符合 ISO 27001 合規。
+            </p>
+
+            <h4 style="margin-top:1rem;">Architecture Decisions</h4>
+            <div class="flow">將既有防禦控制延伸為 Visibility → Detection → Investigation → Response
+以 Threat Intelligence 驗證 WAF 活動 ── 每小時 Top-10 IP 送 VirusTotal（受免費額度約束，設計 240 queries/day）
+疑慮 IP 自動反查 7 天歷史 ── 對應短時間密集攻擊模式
+不同 Confidence 對應不同自主度 ── 情資判斷採人工黑名單；Wazuh 行為偵測（Level>7 且 40x>50）自動封鎖</div>
+
+            <table class="dl-table">
+                <tr><th>Platform Built</th><td>開源安全監控平台（OpenSearch/ELK + Graylog + Wazuh + Teams 告警）</td></tr>
+                <tr><th>Capability</th><td>威脅可見性、偵測、調查輔助、自動回應、帳號治理、組態監控</td></tr>
+                <tr><th>Operational Outcome</th><td>持續偵測未告知變更與可疑 IP，並於 Teams 主動推播；Wazuh 自動封鎖列舉行為</td></tr>
+                <tr><th>Business Impact</th><td>通過 ISO 27001；每年節省約 NT$200K 授權費；取代 SOC L1 人力每年節省 2000+ 工時</td></tr>
+            </table>
+        </section>
+
+        <section>
+            <h3 class="section-title">Supporting Evidence<span class="en">支援證據</span></h3>
+            <div class="grid cols-2">
+                <div class="card">
+                    <p class="company-tag">亞旭電腦</p>
+                    <h4>Cloud Billing Allocation Automation</h4>
+                    <p>
+                        以 Python 解析經銷商 PDF 帳單、依 AWS Account ID 對應部門，
+                        自動產生各單位明細與 Email，並保留人工最終確認關卡。
+                    </p>
+                    <ul class="outcome-list">
+                        <li>每月處理時間：約 1 工作天 → <strong>30–60 分鐘</strong></li>
+                        <li>每年節省 <strong>90+ 工時</strong></li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <p class="company-tag">亞旭電腦</p>
+                    <h4>Cloud ISO 27001 Compliance</h4>
+                    <p>
+                        擔任雲端 ISO 27001 主要負責人、主要被稽核人與文管人員，
+                        負責 AWS 架構文件、資產清冊、帳號權限與變更管理。
+                    </p>
+                    <ul class="outcome-list">
+                        <li>建立可稽核的雲端維運環境（Request → Approval → Execution → Evidence）</li>
+                        <li>直接面對稽核人員並提供稽核證據</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <p class="company-tag">樂耀台灣</p>
+                    <h4>Certificate Lifecycle Automation</h4>
+                    <p>開發 Let's Encrypt 免費憑證自動產生器，批次產出企業域名憑證。</p>
+                    <ul class="outcome-list">
+                        <li>每年節省 <strong>NT$100K+</strong> 憑證費用</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <p class="company-tag">龍群資訊</p>
+                    <h4>Infrastructure Standardization</h4>
+                    <p>建立 CentOS Kickstart 自動安裝平台與 Bash 備份工具（搭配 Dialog 選單）。</p>
+                    <ul class="outcome-list">
+                        <li>標準化產品建置，降低對資深工程師的依賴</li>
+                        <li>客戶可自行進行備份還原</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p class="philosophy">Build platforms, not heroes.</p>
+        <p>&copy; 2026 Allen. All rights reserved.</p>
+    </footer>
+</body>
+</html>
