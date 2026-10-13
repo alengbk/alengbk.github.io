@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Allen Chiu | Senior Enterprise Infrastructure & Platform Engineer</title>
+    <style>
+        :root {
+            --primary-color: #1e3a8a;
+            --primary-hover: #2563eb;
+            --accent-color: #0284c7;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --bg-body: #f8fafc;
+            --bg-card: #ffffff;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Microsoft JhengHei", sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+
+        /* Header Header Area */
+        header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #0f172a 100%);
+            color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        header h2 {
+            font-size: 1.2rem;
+            color: #93c5fd;
+            font-weight: 400;
+            margin-bottom: 24px;
+        }
+
+        .snapshot-box {
+            background: rgba(255, 255, 255, 0.1);
+            border-left: 4px solid #38bdf8;
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            backdrop-filter: blur(5px);
+        }
+
+        .snapshot-box h3 {
+            font-size: 1.05rem;
+            margin-bottom: 10px;
+            color: #38bdf8;
+        }
+
+        .snapshot-box ul {
+            list-style: none;
+        }
+
+        .snapshot-box li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .snapshot-box li::before {
+            content: "➔";
+            position: absolute;
+            left: 0;
+            color: #38bdf8;
+        }
+
+        /* Common Section Layout */
+        section {
+            background: var(--bg-card);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 30px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
+        }
+
+        section h2 {
+            font-size: 1.4rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Quantified Highlights Grid */
+        .highlight-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .highlight-card {
+            background: #f1f5f9;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .highlight-card h3 {
+            font-size: 1rem;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+
+        .highlight-card p {
+            font-size: 0.9rem;
+            color: var(--text-main);
+        }
+
+        /* Quantified Impact Chart Image */
+        .impact-chart {
+            margin-top: 24px;
+            text-align: center;
+        }
+
+        .impact-chart img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .impact-chart figcaption {
+            margin-top: 8px;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+
+        /* Portfolio Evidence (thumbnails + PDF links) */
+        .evidence-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .evidence-thumb {
+            position: relative;
+            margin: 0;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            background: #f8fafc;
+            cursor: pointer;
+            transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+        }
+
+        .evidence-thumb:hover {
+            border-color: var(--accent-color);
+            box-shadow: 0 4px 14px rgba(2, 132, 199, 0.18);
+            transform: translateY(-2px);
+        }
+
+        .evidence-thumb img {
+            width: 100%;
+            height: 130px;
+            object-fit: contain;
+            display: block;
+            background: #ffffff;
+        }
+
+        .evidence-thumb figcaption {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+            text-align: center;
+            padding: 6px 8px;
+            border-top: 1px solid var(--border-color);
+            line-height: 1.4;
+        }
+
+        .evidence-thumb .play-badge {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            background: rgba(2, 132, 199, 0.92);
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 600;
+            padding: 2px 8px;
+            border-radius: 999px;
+            pointer-events: none;
+        }
+
+        .evidence-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 12px;
+        }
+
+        .evidence-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            text-decoration: none;
+            border: 1px solid var(--accent-color);
+            border-radius: 6px;
+            padding: 6px 12px;
+            transition: background 0.2s ease, color 0.2s ease;
+        }
+
+        .evidence-links a:hover {
+            background: var(--accent-color);
+            color: #ffffff;
+        }
+
+        .evidence-links a .ext {
+            font-size: 0.75em;
+            opacity: 0.8;
+        }
+
+        /* Lightbox (reuse assets/lightbox.js) */
+        body.lightbox-open { overflow: hidden; }
+
+        .lightbox-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 23, 42, 0.9);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+            padding: 20px;
+        }
+
+        .lightbox-overlay.visible {
+            opacity: 1;
+            visibility: visible;
+            transition: opacity 0.3s ease;
+        }
+
+        .lightbox-container {
+            position: relative;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 92%;
+            max-height: 92vh;
+            overflow: auto;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .lightbox-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100px;
+        }
+
+        .lightbox-content img,
+        .lightbox-content video {
+            max-width: 100%;
+            max-height: calc(92vh - 80px);
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 10px;
+            right: 14px;
+            font-size: 1.9rem;
+            color: #333;
+            cursor: pointer;
+            line-height: 1;
+            z-index: 2010;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-close:hover { color: #000; background: #fff; }
+
+        /* Collapsible Portfolio Section (<details> / <summary>) */
+        .portfolio-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        details {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            background-color: #ffffff;
+            transition: all 0.2s ease;
+            overflow: hidden;
+        }
+
+        details[open] {
+            border-color: var(--primary-hover);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.08);
+        }
+
+        summary {
+            padding: 16px 20px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-main);
+            cursor: pointer;
+            background-color: #f8fafc;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            user-select: none;
+            transition: background-color 0.2s ease, color 0.2s ease;
+        }
+
+        summary:hover {
+            background-color: #f1f5f9;
+            color: var(--primary-hover);
+        }
+
+        summary::after {
+            content: "+";
+            font-size: 1.3rem;
+            font-weight: 400;
+            color: var(--text-muted);
+            transition: transform 0.2s ease;
+        }
+
+        details[open] summary::after {
+            content: "−";
+            color: var(--primary-hover);
+        }
+
+        .details-body {
+            padding: 20px;
+            border-top: 1px solid var(--border-color);
+            background-color: #ffffff;
+            font-size: 0.95rem;
+        }
+
+        .details-body .item-group {
+            margin-bottom: 12px;
+        }
+
+        .details-body .item-group:last-child {
+            margin-bottom: 0;
+        }
+
+        .details-body strong {
+            color: var(--primary-color);
+            display: inline-block;
+            margin-bottom: 4px;
+        }
+
+        .details-body p, .details-body ul {
+            color: var(--text-main);
+            padding-left: 0;
+        }
+
+        .details-body ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        /* Certifications List */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+
+        .cert-card {
+            border: 1px solid var(--border-color);
+            padding: 16px;
+            border-radius: 8px;
+            background: #fafafa;
+        }
+
+        .cert-card h3 {
+            font-size: 1rem;
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+
+        .cert-card ul {
+            list-style: none;
+            font-size: 0.9rem;
+        }
+
+        .cert-card li {
+            margin-bottom: 4px;
+            padding-left: 12px;
+            position: relative;
+        }
+
+        .cert-card li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+        }
+
+        /* Tech Stack Table */
+        .tech-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.92rem;
+        }
+
+        .tech-table th, .tech-table td {
+            padding: 12px 16px;
+            border: 1px solid var(--border-color);
+            text-align: left;
+        }
+
+        .tech-table th {
+            background-color: #f1f5f9;
+            color: var(--primary-color);
+            width: 28%;
+            font-weight: 600;
+        }
+
+        /* Career History List */
+        .career-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .career-item {
+            padding: 16px;
+            border-left: 3px solid var(--primary-color);
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .career-item h3 {
+            font-size: 1.05rem;
+            color: var(--text-main);
+        }
+
+        .career-item .role {
+            font-size: 0.9rem;
+            color: var(--accent-color);
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        .career-item p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+        }
+
+        footer {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- Header Section -->
+    <header>
+        <h1>Allen Chiu (邱偉倫)</h1>
+        <h2>Senior Enterprise Infrastructure & Platform Engineer / Cloud Security Architect</h2>
+        
+        <div class="snapshot-box">
+            <h3>🎯 30 秒核心快照</h3>
+            <ul>
+                <li><strong>24 年+ 企業級 IT 與雲端維運資歷</strong>：橫跨地端 Linux 機房、企業郵件系統、AWS/GCP 雲端架構與主動式資安營運（SecOps）。</li>
+                <li><strong>職涯定位</strong>：Senior Individual Contributor (IC)，專注於技術深度、架構決策與系統落地，不走管理職。</li>
+                <li><strong>核心工程哲學</strong>：「讓 IT 不依賴英雄，而依賴平台」（Build platforms, not heroes.）—— 將複雜人工運維封裝為自動化與防呆平台。</li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Business Value Highlights -->
+    <section>
+        <h2>商業價值與量化成果亮點</h2>
+        <div class="highlight-grid">
+            <div class="highlight-card">
+                <h3>大幅提升營運效率</h3>
+                <p>打造自助式 Java API 部署平台，部署時間由 15 分鐘縮短至 3 分鐘，釋放 95% 日常部署干擾，每月節省 60+ 小時資深工程師工時。</p>
+            </div>
+            <div class="highlight-card">
+                <h3>高韌性與災難復原</h3>
+                <p>規劃混合雲資料庫讀寫分離與異地備援，徹底解決地端 Disk I/O 競爭，將 RTO 由 8 小時大幅縮短至 60 分鐘（提升 88%）。</p>
+            </div>
+            <div class="highlight-card">
+                <h3>顯著降低營運成本</h3>
+                <p>以開源 Wazuh/ELK 替代商業 SIEM 年省 NT$ 200,000+；Let's Encrypt 自動憑證年省 NT$ 100,000+；雲端帳務自動化年省 90+ 小時。</p>
+            </div>
+            <div class="highlight-card">
+                <h3>資安合規與自動化</h3>
+                <p>主導雲端部門與企業首度高分通過外部 ISO 27001 認證；以自動化主動防禦機制取代傳統 SOC L1 人力，年省 2,000+ 工時。</p>
+            </div>
+        </div>
+
+        <!-- Quantified Business Value & Ops Impact Chart -->
+        <figure class="impact-chart">
+            <img src="assets/business-value-impact.png" alt="量化商業價值與維運工程影響力：營運效率（每年節省工時 2,000/720/90 小時）、財務優化（每年節省軟體授權費 NT$ 200K+/100K+）、基礎架構韌性（RTO 由 480 分鐘縮短至 60 分鐘，降低 88%）" loading="lazy">
+            <figcaption>量化商業價值與維運工程影響力總覽</figcaption>
+        </figure>
+    </section>
+
+    <!-- Top 10 Portfolio Section (Collapsible) -->
+    <section>
+        <h2>🏆 最有價值的 Top 10 代表作品 (點擊標題即可展開細節)</h2>
+        <div class="portfolio-list">
+
+            <!-- Item 1 -->
+            <details>
+                <summary>1. 主動式雲端安全營運平台 (Enterprise Cloud Security Operations Platform)</summary>
+                <div class="details-body">
+                    <div class="item-group">
+                        <strong>企業痛點：</strong>
+                        <p>缺乏商業 SIEM 預算，AWS 多帳號環境缺乏集中監控，WAF 防火牆僅能被動阻擋，且多人共用環境常發生未通知之 EC2 變更或 sudo 提權行為。</p>
+                    </div>
+                    <div class="item-group">
+                        <strong>架構決策與行動：</strong>
+                        <p>設計「應變自主權隨偵測信心度遞增」雙軌平台：1. 情資軌：輪詢 VirusTotal API 輔助決策；2. 行為軌：Wazuh 分析 Nginx 日誌，1小時內異常達標自動呼叫 Webhook 並透過 awscli 寫入 AWS WAF 封鎖。</p>
+                    </div>
+                    <div class="item-group">
+                        <strong>商業與運維成果：</strong>
+                        <p>零軟體授權費（年省 NT$ 200K+）通過 ISO 27001 審驗；自動化防禦替代 SOC L1 人力，年省 2,000+ 工時。</p>
+                    </div>
+                    <div class="item-group">
+                        <strong>實作佐證（點擊圖片可放大檢視）：</strong>
+                        <div class="evidence-grid">
+                            <figure class="evidence-thumb" data-lightbox-src="https://alengbk.github.io/AWS_Security_02.png">
+                                <img src="assets/portfolio/thumb-aws-security-02.png" alt="AWS 資安示意圖：VirusTotal 情資比對與自動化防禦" loading="lazy">
+                                <figcaption>AWS 資安示意圖（VirusTotal / S3 掃描 / 組態告警）</figcaption>
+                            </figure>
+                            <figure class="evidence-thumb" data-lightbox-src="https://alengbk.github.io/wazuh-nginx.png">
+                                <img src="assets/portfolio/thumb-wazuh-nginx.png" alt="Wazuh Nginx 威脅分析與自動封鎖" loading="lazy">
+                                <figcaption>Wazuh — Nginx 威脅分析</figcaption>
+                            </figure>
+                            <figure class="evidence-thumb" data-lightbox-src="https://alengbk.github.io/aws-waf-elk-wazuh-graylog.png">
+                                <img src="assets/portfolio/thumb-waf-elk-wazuh-graylog.png" alt="WAF 開源加 AWS Shield 整合防護架構" loading="lazy">
+                                <figcaption>WAF — 開源 + AWS Shield 防護</figcaption>
+                            </figure>
+                            <figure class="evidence-thumb" data-lightbox-src="https://alengbk.github.io/AWS_Security_01.png">
+                                <img src="assets/portfolio/thumb-aws-security-01.png" alt="AWS 自製資安監控系統" loading="lazy">
+                                <figcaption>AWS 自製監控系統（ES 分析）</figcaption>
+                            </figure>
+                        </div>
+                        <div class="evidence-links">
+                            <a href="https://alengbk.github.io/aws-waf-elk-wazuh-graylog.pdf" target="_blank" rel="noopener noreferrer">📄 WAF 開源整合防護完整報告（PDF）<span class="ext">↗ 新視窗</span></a>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <!-- Item 2 -->
+            <details>
+                <summary>2. AI 安全可視化與威脅判讀平台 (AI-Assisted Security Analytics Platform)</summary>
+                <div class="details-body">
+                    <div class="item-group">
+                        <strong>企業痛點：</strong>
+                        <p>WAF 攻擊日誌專業門檻高，非資安背景之網站管理者與前端開發人員無法判讀攻擊風險，跨部門溝通成本高昂。</p>
+                    </div>
+                    <div class="item-group">
+                        <strong>架構決策與行動：</strong>
+                        <p>建置 AI 輔助分析流水線，將 WAF Log 去識別化後提交至 Gemini Flash 2.5 AI 模型，自動生成攻擊摘要、風險等級評估與前端程式碼修補建議。</p>
+                    </div>
+                    <div class="item-group">
+                        <strong>商業與運維成果：</strong>
+                        <p>賦能各網站管理者自主進行第一線安全評估，安全事件判讀效率提升 80%。</p>
+                    </div>
+                    <div class="item-group">
+                        <strong>實作佐證（點擊圖片可放大檢視）：</strong>
+                        <div class="evidence-grid">
+                            <figure class="evidence-thumb" data-lightbox-src="https://alengbk.github.io/WAF-Graylog-OTX.png">
+                                <img src="assets/portfolio/thumb-waf-graylog-otx.png" alt="AWS WAF 驅動社群力量防護：Graylog 加 OTX 情資結合 Gemini AI 預判風險值" loading="lazy">
+                                <figcaption>AWS WAF 驅動社群力量防護（Gemini AI 預判風險值）</figcaption>
+                            </figure>
+                            <figure class="evidence-thumb" data-lightbox-src="https://alengbk.github.io/aws-waf-graylog.png">
+                                <img src="assets/portfolio/thumb-aws-waf-graylog.png" alt="GrayLog 搭配 SQS 收取 S3 WAF Log" loading="lazy">
+                                <figcaption>GrayLog + SQS 收取 WAF Log Pipeline</figcaption>
+                            </figure>
+                        </div>
+                        <div class="evidence-links">
+                            <a href="https://alengbk.github.io/WAF-community-defense.pdf" target="_blank" rel="noopener noreferrer">📄 AI 情資驅動社群防護完整報告（PDF）<span class="ext">↗ 新視窗</span></a>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <!-- Item 3 -->
+            <details>
+                <summary>3. 自助式 Java API 自動化部署平台 (Self-Service Deployment Platform)</summary>
+                <div class="details-body">
+                    <div class="item-group">
+                        <strong>企業痛點：</strong>
+                        <p>12 台主機承載 36 隻高併發 Java APIs，更版極度頻繁，高度依賴二線資深工程師手動 SSH 操作，造成維運瓶頸。</p>
+                    </div>
+                    <div class="item-group">
+                        <strong>架構決策與行動：</strong>
+                        <p>整合 Flask + AWX + Jenkins 打造圖形化部署 Web 平台，「隱藏底層 Linux 指令」，加入部署狀態紀錄與一鍵回滾（Rollback）機制，安全下放操作權限。</p>
+                    </div>
+                    <div class="item-group">
+                        <strong>商業與運維成果：</strong>
+                        <p>單隻 API 部署時間由 15 分鐘縮短至 3 分鐘；95% 的日常更版由一線值班人員獨立完成，每月節省 60+ 小時資深工程師工時。</p>
+                    </div>
+                    <div class="item-group">
+                        <strong>實作佐證（點擊圖片可放大檢視，▶ 為操作示範影片）：</strong>
+                        <div class="evidence-grid">
+                            <figure class="evidence-thumb" data-lightbox-src="https://alengbk.github.io/awx-cd.mp4">
+                                <span class="play-badge">▶ 影片</span>
+                                <img src="assets/portfolio/thumb-awx.png" alt="AWX 自動化網頁操作示範影片" loading="lazy">
+                                <figcaption>AWX 自動化部署操作示範</figcaption>
+                            </figure>
+                            <figure class="evidence-thumb" data-lightbox-src="https://alengbk.github.io/flask.png">
+                                <img src="assets/portfolio/thumb-flask.png" alt="Flask 網頁工具" loading="lazy">
+                                <figcaption>Flask 網頁工具（更版資訊轉換）</figcaption>
+                            </figure>
+                            <figure class="evidence-thumb" data-lightbox-src="https://alengbk.github.io/jenkins-02.png">
+                                <img src="assets/portfolio/thumb-jenkins-02.png" alt="Jenkins 服務重啟自動化" loading="lazy">
+                                <figcaption>Jenkins — 服務重啟自動化</figcaption>
+                            </figure>
+                            <figure class="evidence-thumb" data-lightbox-src="https://alengbk.github.io/Jenkins-CDN.png">
+                                <img src="assets/portfolio/thumb-jenkins-cdn.png" alt="Jenkins AWS CDN 清除快取" loading="lazy">
+                                <figcaption>Jenkins — AWS CDN 清除快取</figcaption>
+                            </figure>
+                            <figure class="evidence-thumb" data-lightbox-src="https://alengbk.github.io/GitLab-CI.png">
+                                <img src="assets/portfolio/thumb-gitlab-ci.png" alt="GitLab-CI 自動化部署" loading="lazy">
+                                <figcaption>GitLab-CI 自動化部署</figcaption>
+                            </figure>
+                            <figure class="evidence-thumb" data-lightbox-src="https://raw.githubusercontent.com/alengbk/alengbk.github.io/master/git-jar.png">
+                                <img src="assets/portfolio/thumb-git-jar.png" alt="更版 jar 檔自動備份與快速回滾" loading="lazy">
+                                <figcaption>更版 jar 檔自動備份（S3 快速回滾）</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <!-- Item 4 -->
+            <details>
+                <summary>4. 混合雲資料庫韌性與讀寫分離平台 (Hybrid Cloud Database DR Platform)</summary>
+                <div class="details-body">
+                    <div class="item-group">
+                        <strong>企業痛點：</strong>
+                        <p>地端 MySQL 資料量龐大，傳統 mysqldump 備份鎖表且吃滿 Disk I/O；Slave 容易失效且重建需耗時 8 小時（RTO=8h）。</p>
+                    </div>
+                    <div class="item-group">
+                        <strong>架構決策與行動：</strong>
+                        <p>將 MySQL Slave 節點延伸至 AWS 實施讀寫分離；導入 Percona XtraBackup 於 AWS Slave 執行非侵入式熱備份並儲存於 AWS NFS，並建立追日誌復原策略。</p>
+                    </div>
+                    <div class="item-group">
+                        <strong>商業與運維成果：</strong>
+                        <p>徹底解鎖地端 VMware 硬體資源競爭；資料庫災難復原時間（RTO）由 8 小時大幅縮短至 60 分鐘（復原效率提升 88%）。</p>
+                    </div>
+                    <div class="item-group">
+                        <strong>實作佐證（點擊圖片可放大檢視）：</strong>
+                        <div class="evidence-grid">
+                            <figure class="evidence-thumb" data-lightbox-src="https://raw.githubusercontent.com/alengbk/alengbk.github.io/master/mysql-dr-01.png">
+                                <img src="assets/portfolio/thumb-mysql-dr-01.png" alt="MySQL 備份基礎設施架構圖" loading="lazy">
+                                <figcaption>MySQL 備份基礎設施架構圖</figcaption>
+                            </figure>
+                            <figure class="evidence-thumb" data-lightbox-src="https://raw.githubusercontent.com/alengbk/alengbk.github.io/master/mysql-dr-02.png">
+                                <img src="assets/portfolio/thumb-mysql-dr-02.png" alt="MySQL 備份雲端設施架構圖" loading="lazy">
+                                <figcaption>MySQL 備份雲端架構（VPN 同步 + EFS + TiDB）</figcaption>
+                            </figure>
+                            <figure class="evidence-thumb" data-lightbox-src="https://raw.githubusercontent.com/alengbk/alengbk.github.io/master/mysql-dr-03.png">
+                                <img src="assets/portfolio/thumb-mysql-dr-03.png" alt="雲上 XtraBackup 備份策略" loading="lazy">
+                                <figcaption>雲上 XtraBackup 備份策略</figcaption>
+                            </figure>
+                            <figure class="evidence-thumb" data-lightbox-src="https://alengbk.github.io/tg-alter-backup-01.png">
+                                <img src="assets/portfolio/thumb-tg-alter-backup-01.png" alt="Percona XtraBackup 自動備份還原" loading="lazy">
+                                <figcaption>Percona XtraBackup 自動備份還原</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <!-- Item 5 -->
+            <details>
+                <summary>5. 免費憑證自動化生命週期管理平台 (Certificate Lifecycle Automation Platform)</summary>
+                <div class="details-body">
+                    <div class="item-group">
+                        <strong>企業痛點：</strong>
+                        <p>公司管理數十個企業網域，商業 SSL 憑證採購成本高昂，且人工手動更換極易因疏漏造成憑證過期、服務中斷的重大風險。</p>
+                    </div>
+                    <div class="item-group">
+                        <strong>架構決策與行動：</strong>
+                        <p>設計 Let's Encrypt 憑證自動化管理機制，將憑證申請、DNS 驗證、自動定時更新與 Web 伺服器部署全面自動化。</p>
+                    </div>
+                    <div class="item-group">
+                        <strong>商業與運維成果：</strong>
+                        <p>每年節省約 NT$ 100,000 商業憑證採購費用，徹底消除憑證過期造成的服務停機風險。</p>
+                    </div>
+                    <div class="item-group">
+                        <strong>實作佐證（點擊圖片可放大檢視）：</strong>
+                        <div class="evidence-grid">
+                            <figure class="evidence-thumb" data-lightbox-src="https://alengbk.github.io/cert-gen.png">
+                                <img src="assets/portfolio/thumb-cert-gen.png" alt="SSL 憑證產生器 Let's Encrypt" loading="lazy">
+                                <figcaption>SSL 憑證產生器（Let's Encrypt / Certbot）</figcaption>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <!-- Item 6 -->
+            <details>
+                <summary>6. 雲端帳務自動化分攤平台 (Cloud Billing Allocation Automation)</summary>
+                <div class="details-body">
+                    <div class="item-group">
+                        <strong>企業痛點：</strong>
+                        <p>多個開發部門共用 AWS 帳號，每月收到 PDF 帳單需人工比對 Account、複製數字至 Excel 並郵寄各主管，耗時 1 整天（8小時）且易生出錯。</p>
+                    </div>
+                    <div class="item-group">
+                        <strong>架構決策與行動：</strong>
+                        <p>以 Python 開發自動化帳務處理工具（pdf_parse + xlwings + smtplib），自動解析 PDF 明細、對照部門 Accounts、渲染 Excel 明細並生成 Gmail 草稿。</p>
+                    </div>
+                    <div class="item-group">
+                        <strong>商業與運維成果：</strong>
+                        <p>每月處理時間由 1 天縮短至 30–60 分鐘，每年節省 90+ 小時行政工時，實現零帳務錯誤率。</p>
+                    </div>
+                </div>
+            </details>
+
+            <!-- Item 7 -->
+            <details>
+                <summary>7. 雲端 ISO 27001 合規與輕量變更治理平台 (Cloud ISO 27001 & Change Governance)</summary>
+                <div class="details-body">
+                    <div class="item-group">
+                        <strong>企業痛點：</strong>
+                        <p>雲端服務部門成立需通過 ISO 27001 外部認證，但缺乏標準化架構文件、資產清冊及可追蹤的變更稽核證據。</p>
+                    </div>
+                    <div class="item-group">
+                        <strong>架構決策與行動：</strong>
+                        <p>擔任 Cloud ISO 27001 主要被稽核窗口與文管，設計以 Google Form ➔ Google Sheet 為核心的輕量變更流程，建立完整稽核證據鏈。</p>
+                    </div>
+                    <div class="item-group">
+                        <strong>商業與運維成果：</strong>
+                        <p>協助雲端部門首度高分通過外部 ISO 27001 認證，建立低成本且嚴謹符合合規規範的變更管理制度。</p>
+                    </div>
+                    <div class="item-group">
+                        <strong>實作佐證（點擊圖片可放大檢視）：</strong>
+                        <div class="evidence-grid">
+                            <figure class="evidence-thumb" data-lightbox-src="https://alengbk.github.io/aws-security-custom.png">
+                                <img src="assets/portfolio/thumb-aws-security-custom.png" alt="AWS 資安自製工具 Python 合規" loading="lazy">
+                                <figcaption>AWS 資安自製工具（Python / ISO 27001）</figcaption>
+                            </figure>
+                            <figure class="evidence-thumb" data-lightbox-src="https://alengbk.github.io/ai-coding-01.png">
+                                <img src="assets/portfolio/thumb-ai-coding-01.png" alt="AI Coding 簡易工單系統" loading="lazy">
+                                <figcaption>AI 工單系統（FastAPI / 異動自動建單留證）</figcaption>
+                            </figure>
+                        </div>
+                        <div class="evidence-links">
+                            <a href="https://alengbk.github.io/AWS_Security_custom.pdf" target="_blank" rel="noopener noreferrer">📄 AWS 資安自製工具（ISO 27001 合規）報告（PDF）<span class="ext">↗ 新視窗</span></a>
+                            <a href="https://alengbk.github.io/ai-coding-01.pdf" target="_blank" rel="noopener noreferrer">📄 AI Coding 工單系統報告（PDF）<span class="ext">↗ 新視窗</span></a>
+                        </div>
+                    </div>
+                </div>
+            </details>
+
+            <!-- Item 8 -->
+            <details>
+                <summary>8. 大型企業郵件備存清洗與安全移轉 (Enterprise Mail Archiving & Migration)</summary>
+                <div class="details-body">
+                    <div class="item-group">
+                        <strong>企業痛點：</strong>
+                        <p>陽明海運數 TB 歷史郵件資料轉移面臨原廠工具瓶頸；南山產物保險機房搬遷後郵件服務發生網路延遲與效能異常。</p>
+                    </div>
+                    <div class="item-group">
+                        <strong>架構決策與行動：</strong>
+                        <p>親赴現場分析底層資料結構，編寫高容錯資料移轉腳本；運用 Wireshark 封包分析定位機房搬遷後的網路通訊瓶頸，並以 JMeter 執行高併發壓測驗證。</p>
+                    </div>
+                    <div class="item-group">
+                        <strong>商業與運維成果：</strong>
+                        <p>安全清洗並移轉數 TB 郵件歷史資產；完成產險機房搬遷後之穩定性驗證，大幅降低系統停機營運風險。</p>
+                    </div>
+                </div>
+            </details>
+
+            <!-- Item 9 -->
+            <details>
+                <summary>9. CentOS Kickstart 自動化安裝與標準化平台 (CentOS Kickstart Automated Installation Platform)</summary>
+                <div class="details-body">
+                    <div class="item-group">
+                        <strong>企業痛點：</strong>
+                        <p>電子書產品安裝繁瑣，每次皆需資深工程師親赴客戶機房手動安裝數天，且易因個人習慣產生環境配置差異與售後排障困難。</p>
+                    </div>
+                    <div class="item-group">
+                        <strong>架構決策與行動：</strong>
+                        <p>建置 CentOS Kickstart 自動安裝平台，將 OS、套件依賴與 Kernel 參數調校（sysctl.conf）全面規格化與模組化。</p>
+                    </div>
+                    <div class="item-group">
+                        <strong>商業與運維成果：</strong>
+                        <p>現場部署時間由數天縮短至數小時；部署 SOP 規格化，降低對資深工程師的依賴與人力派遣成本。</p>
+                    </div>
+                </div>
+            </details>
+
+            <!-- Item 10 -->
+            <details>
+                <summary>10. 互動式備份還原工具箱 (Interactive Backup & Recovery Toolkit)</summary>
+                <div class="details-body">
+                    <div class="item-group">
+                        <strong>企業痛點：</strong>
+                        <p>代理之 Linux 產品原廠缺乏備份還原機制，資料損壞時需頻繁派遣工程師赴現場救援，售後維護成本極高。</p>
+                    </div>
+                    <div class="item-group">
+                        <strong>架構決策與行動：</strong>
+                        <p>以 Bash 編寫資料庫與系統備份腳本，結合 Dialog 模組打造直覺的防呆互動式文字選單。</p>
+                    </div>
+                    <div class="item-group">
+                        <strong>商業與運維成果：</strong>
+                        <p>無中生有賦予產品備份與還原能力，非技術客戶可一鍵自主備份還原，大幅削減售後派遣與維修成本。</p>
+                    </div>
+                </div>
+            </details>
+
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section>
+        <h2>📜 資格認證與合規 (Certifications & Compliance)</h2>
+        <div class="cert-grid">
+            <div class="cert-card">
+                <h3>EC-Council 資安頂級認證</h3>
+                <ul>
+                    <li>CEH Master (Certified Ethical Hacker Master)</li>
+                    <li>CEHP (CEH Practical 實操認證)</li>
+                    <li>CEH (Certified Ethical Hacker 駭客技術專家認證)</li>
+                </ul>
+            </div>
+            <div class="cert-card">
+                <h3>Linux & 系統國際認證</h3>
+                <ul>
+                    <li>Red Hat RHCE (Red Hat Certified Engineer 認證工程師)</li>
+                    <li>Red Hat RHCT (Red Hat Certified Technician)</li>
+                </ul>
+            </div>
+            <div class="cert-card">
+                <h3>雲端、網路與合規實務</h3>
+                <ul>
+                    <li>Microsoft Certified: Azure Fundamentals (AZ-900)</li>
+                    <li>NSPA (網路封包分析專家認證)</li>
+                    <li>ISO 27001 主導與被稽核窗口 (Lead Auditee / Owner)</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills & Tech Stack Section -->
+    <section>
+        <h2>🛠️ 工具與技術領域 (Skills & Technologies)</h2>
+        <table class="tech-table">
+            <tr>
+                <th>雲端平台 (Cloud)</th>
+                <td>AWS (EC2, S3, CloudFront, Lambda, DynamoDB, RDS, IAM, WAF, CloudTrail, SSM, Route53, KMS, VPC, Cost Explorer)、GCP (Compute Engine, Cloud Armor)、Aliyun</td>
+            </tr>
+            <tr>
+                <th>作業系統 (OS)</th>
+                <td>CentOS、Red Hat Enterprise Linux (RHEL)、Ubuntu、Rocky Linux、Windows Server、FreeBSD</td>
+            </tr>
+            <tr>
+                <th>自動化與 IaC</th>
+                <td>Ansible (IaC)、Jenkins、AWX、Flask (Web GUI)、Bash Script、Python</td>
+            </tr>
+            <tr>
+                <th>資安與日誌分析</th>
+                <td>OpenSearch / ELK Stack、Graylog、Wazuh (SIEM/XDR)、AWS WAF/Shield、VirusTotal API、AlienVault OTX、Wireshark、NSPA、JMeter</td>
+            </tr>
+            <tr>
+                <th>資料庫與儲存</th>
+                <td>MySQL、Percona XtraBackup、MySQL Replication (讀寫分離)、AWS NFS、Docker</td>
+            </tr>
+            <tr>
+                <th>Observability & 告警</th>
+                <td>OpenSearch、ELK、Grafana、Graylog、Prometheus、Microsoft Teams / Slack Webhook 整合</td>
+            </tr>
+            <tr>
+                <th>AI 與現代工作流</th>
+                <td>Gemini Flash 2.5 (WAF Log 去識別化 AI 威脅分析與代碼修補建議)</td>
+            </tr>
+            <tr>
+                <th>程式語言</th>
+                <td>Python、Bash / Shell Script</td>
+            </tr>
+        </table>
+    </section>
+
+    <!-- Career Summary Section -->
+    <section>
+        <h2>🏢 職涯經歷速查 (Career Summary)</h2>
+        <div class="career-list">
+            <div class="career-item">
+                <h3>瀚宇彩晶 (HannStar Display)</h3>
+                <div class="role">Senior Cloud Security & Platform Engineer (2023/02 – 2026/02)</div>
+                <p>負責 AWS 雲端架構、資安治理（ISO 27001）、自動化監控與 OpenSearch/ELK 可觀測性平台建置。</p>
+            </div>
+            <div class="career-item">
+                <h3>樂耀台灣 (Leyao Taiwan)</h3>
+                <div class="role">Senior Infrastructure & Platform Engineer (2020/07 – 2023/02)</div>
+                <p>負責 Linux 基礎架構、MySQL 混合雲災難復原（DR）、Flask/Jenkins/AWX 自助部署平台及 Let's Encrypt 憑證自動化。</p>
+            </div>
+            <div class="career-item">
+                <h3>亞旭電腦 (Askey Computer)</h3>
+                <div class="role">Cloud Systems Engineer (2018/06 – 2020/07)</div>
+                <p>負責 AWS 產品代管維運、Python 帳務自動化解析，並擔任雲端部門首度通過 ISO 27001 外部稽核的主要負責人。</p>
+            </div>
+            <div class="career-item">
+                <h3>綠色運算 (Green Computing)</h3>
+                <div class="role">Technical Consultant / Infrastructure Engineer (2015/04 – 2018/05)</div>
+                <p>負責大型企業郵件備存、郵件稽核與資安產品導入，主導陽明海運數 TB 備存郵件移轉與南山產險機房搬遷排障。</p>
+            </div>
+            <div class="career-item">
+                <h3>瓏群資訊 (Loon-Group)</h3>
+                <div class="role">Infrastructure Automation Engineer (2001/10 – 2015/04)</div>
+                <p>負責 CentOS Kickstart 自動化安裝平台建置、Bash+Dialog 互動式備份還原工具開發及 Linux 系統標準化 SOP。</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© Allen Chiu | Built with HTML5 & Pure CSS | Build platforms, not heroes.</p>
+    </footer>
+
+</div>
+
+<!-- Lightbox overlay (shared with assets/lightbox.js) -->
+<div id="lightbox-overlay" class="lightbox-overlay">
+    <div id="lightbox-container" class="lightbox-container">
+        <span id="lightbox-close" class="lightbox-close" title="關閉">&times;</span>
+        <div id="lightbox-content" class="lightbox-content"></div>
+    </div>
+</div>
+
+<script src="assets/lightbox.js"></script>
+
+</body>
+</html>
